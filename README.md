@@ -6,18 +6,12 @@ Paper: [arxiv](https://arxiv.org/abs/2111.09957)
 
 The code is coming soon.
 
-mIOU vs params
-
-![params](./figs/miou_vs_params.pdf)
-
-mIOU vs flops
-
-![flops](./figs/miou_vs_flops.pdf)
+![params](./figs/miou_vs_params.png) ![flops](./figs/miou_vs_flops.png)
 
 D block
 
-![DBlock](./figs/DBlock1.pdf)
+![DBlock](./figs/DBlock1.png)
 
 Decoder
 
-![Decoder](./figs/Decoder.pdf)
+![Decoder](./figs/Decoder.png)
