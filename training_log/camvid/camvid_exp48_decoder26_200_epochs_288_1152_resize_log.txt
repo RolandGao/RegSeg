@@ -1,0 +1,2229 @@
+{'model_name': 'exp48_decoder26', 'model_type': 'experimental2', 'num_classes': 11, 'ignore_value': 255, 'pretrained_backbone': False, 'change_num_classes': True, 'epochs': 200, 'max_epochs': 200, 'resume': False, 'lr': 0.005, 'momentum': 0.9, 'weight_decay': 0.0001, 'class_weight': None, 'bn_weight_decay': False, 'bn_precise_stats': False, 'bn_precise_num_samples': 600, 'lr_scheduler': 'poly', 'poly_power': 0.9, 'warmup_iters': 1000, 'warmup_factor': 0.1, 'mixed_precision': True, 'runs': 1, 'run': 1, 'RNG_seed': 1, 'loss_type': 'cross_entropy', 'eval_while_train': True, 'exclude_classes': [], 'warmup_iter': 3, 'num_iter': 30, 'benchmark_loader': True, 'benchmark_model': True, 'dataset_name': 'camvid', 'dataset_dir': 'CamVid3', 'batch_size': 12, 'train_min_size': 288, 'train_max_size': 1152, 'train_crop_size': [720, 960], 'val_input_size': 720, 'val_label_size': 720, 'aug_mode': 'baseline', 'resize_mode': 'uniform', 'edge_aware_crop': False, 'boost_rare_classes': False, 'num_workers': 6, 'class_uniform_pct': 0, 'train_split': 'trainval', 'val_split': 'test', 'max_eval': 10000, 'validate_train_loader': False, 'eval_print_every': 1000, 'train_print_every': 400, 'pretrained_path': 'checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1', 'save_every_k_epochs': 20, 'save_last_k_epochs': 10, 'save_dir': 'checkpoints', 'log_dir': 'training_log', 'save_name': 'camvid_exp48_decoder26_200_epochs_288_1152_resize', 'save_best_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_run1', 'save_latest_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'resume_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'log_path': 'training_log/camvid_exp48_decoder26_200_epochs_288_1152_resize_log.txt'}
+run: 1
+epoch: 0
+loss: 1.882814416518578
+IOU: [83.42, 67.4, 85.4, 27.77, 0.25, 76.57, 0.0, 0.0, 0.29, 30.59, 1.47]
+mIOU: 33.92, mIOU_reduced: 33.92, accuracy: 81.56
+epoch: 1
+loss: 0.7923024541292435
+epoch: 2
+loss: 0.5062587826679914
+epoch: 3
+loss: 0.3768668274084727
+epoch: 4
+loss: 0.3184514473646115
+epoch: 5
+loss: 0.278477288209475
+epoch: 6
+loss: 0.2556183303777988
+epoch: 7
+loss: 0.23507761038266695
+epoch: 8
+loss: 0.21882699124324015
+epoch: 9
+loss: 0.189350059399238
+epoch: 10
+loss: 0.17866602081518906
+epoch: 11
+loss: 0.16614165558264807
+epoch: 12
+loss: 0.1593299945577597
+epoch: 13
+loss: 0.14636646688748628
+epoch: 14
+loss: 0.1405042786246691
+epoch: 15
+loss: 0.13330566883087158
+epoch: 16
+loss: 0.12915790463105226
+epoch: 17
+loss: 0.12376039436994454
+epoch: 18
+loss: 0.12180922486079045
+epoch: 19
+loss: 0.1139277105148022
+IOU: [90.7, 80.64, 92.48, 93.13, 0.18, 96.83, 70.65, 73.71, 41.41, 91.0, 70.94]
+mIOU: 72.88, mIOU_reduced: 72.88, accuracy: 94.72
+epoch: 20
+loss: 0.11475245845623505
+epoch: 21
+loss: 0.11116617841598316
+epoch: 22
+loss: 0.11348335444927216
+epoch: 23
+loss: 0.10527796890491094
+epoch: 24
+loss: 0.10693304106975213
+epoch: 25
+loss: 0.10809492319822311
+epoch: 26
+loss: 0.10329826787496224
+epoch: 27
+loss: 0.10067913681268692
+epoch: 28
+loss: 0.09822505502364574
+epoch: 29
+loss: 0.09957352739114028
+epoch: 30
+loss: 0.09746202539939147
+epoch: 31
+loss: 0.09679794980165286
+epoch: 32
+loss: 0.0944864660119399
+epoch: 33
+loss: 0.09504838593495198
+epoch: 34
+loss: 0.09392633785804112
+epoch: 35
+loss: 0.09456198041637738
+epoch: 36
+loss: 0.09337136550591542
+epoch: 37
+loss: 0.09391205643232052
+epoch: 38
+loss: 0.09160031110812457
+epoch: 39
+loss: 0.08942748510684723
+IOU: [91.05, 81.21, 93.06, 94.04, 50.44, 97.15, 74.55, 74.56, 47.59, 91.8, 76.86]
+mIOU: 79.3, mIOU_reduced: 79.3, accuracy: 95.13
+epoch: 40
+loss: 0.09124901470465538
+epoch: 41
+loss: 0.08782456031976602
+epoch: 42
+loss: 0.09057228439129315
+epoch: 43
+loss: 0.08702379713455836
+epoch: 44
+loss: 0.08705568256286475
+epoch: 45
+loss: 0.08671818434810027
+epoch: 46
+loss: 0.08504309829993126
+epoch: 47
+loss: 0.08462032121725571
+epoch: 48
+loss: 0.08713573102767651
+epoch: 49
+loss: 0.08466807857919963
+epoch: 50
+loss: 0.08612829437240577
+epoch: 51
+loss: 0.08253548418482144
+epoch: 52
+loss: 0.08343457230008565
+epoch: 53
+loss: 0.08525221135753852
+epoch: 54
+loss: 0.08351374704104203
+epoch: 55
+loss: 0.0835096487441124
+epoch: 56
+loss: 0.08150160904878224
+epoch: 57
+loss: 0.08331102228317505
+epoch: 58
+loss: 0.08338414610196383
+epoch: 59
+loss: 0.08286272772611716
+IOU: [91.12, 81.18, 93.17, 94.15, 56.75, 97.23, 75.51, 75.56, 48.61, 92.06, 77.7]
+mIOU: 80.28, mIOU_reduced: 80.28, accuracy: 95.22
+epoch: 60
+loss: 0.08309620695236401
+epoch: 61
+loss: 0.08169395915972881
+epoch: 62
+loss: 0.08066422969867022
+epoch: 63
+loss: 0.08125472202514991
+epoch: 64
+loss: 0.08146897550576772
+epoch: 65
+loss: 0.08232568978117062
+epoch: 66
+loss: 0.07854524493599549
+epoch: 67
+loss: 0.0801465371862436
+epoch: 68
+loss: 0.07947995045628303
+epoch: 69
+loss: 0.08070327265140338
+epoch: 70
+loss: 0.0806711352406404
+epoch: 71
+loss: 0.07985592967806718
+epoch: 72
+loss: 0.07906075844015831
+epoch: 73
+loss: 0.08057163904110591
+epoch: 74
+loss: 0.07854842375486325
+epoch: 75
+loss: 0.07869450814830951
+epoch: 76
+loss: 0.0800516460186396
+epoch: 77
+loss: 0.08003609254956245
+epoch: 78
+loss: 0.07953804903305493
+epoch: 79
+loss: 0.07729075982784614
+IOU: [91.37, 81.58, 93.2, 94.1, 58.71, 97.26, 75.82, 74.73, 48.95, 92.07, 78.02]
+mIOU: 80.53, mIOU_reduced: 80.53, accuracy: 95.3
+epoch: 80
+loss: 0.07660514718064895
+epoch: 81
+loss: 0.07677464072520916
+epoch: 82
+loss: 0.07703843187445249
+epoch: 83
+loss: 0.07743534436210608
+epoch: 84
+loss: 0.0773270081442136
+epoch: 85
+loss: 0.07623279257080494
+epoch: 86
+loss: 0.07769269047257228
+epoch: 87
+loss: 0.07780770604044963
+epoch: 88
+loss: 0.0753338642609425
+epoch: 89
+loss: 0.07786470718490772
+epoch: 90
+loss: 0.07799229197777234
+epoch: 91
+loss: 0.07569644657465127
+epoch: 92
+loss: 0.07647383318115504
+epoch: 93
+loss: 0.07581158326222347
+epoch: 94
+loss: 0.07539883246406531
+epoch: 95
+loss: 0.07580077743683106
+epoch: 96
+loss: 0.07327328288020232
+epoch: 97
+loss: 0.07389745622491226
+epoch: 98
+loss: 0.07626729238873874
+epoch: 99
+loss: 0.07612342588030376
+IOU: [91.38, 81.77, 93.26, 94.1, 59.17, 97.3, 75.91, 74.52, 49.6, 92.15, 77.85]
+mIOU: 80.64, mIOU_reduced: 80.64, accuracy: 95.33
+epoch: 100
+loss: 0.076389969063875
+epoch: 101
+loss: 0.07460167173009652
+epoch: 102
+loss: 0.07373132136387703
+epoch: 103
+loss: 0.0750144528081784
+epoch: 104
+loss: 0.07407259453947727
+epoch: 105
+loss: 0.0760812065922297
+epoch: 106
+loss: 0.07440795415104964
+epoch: 107
+loss: 0.0760899553887355
+epoch: 108
+loss: 0.07473391619248268
+epoch: 109
+loss: 0.07514433152018449
+epoch: 110
+loss: 0.07377212886244823
+epoch: 111
+loss: 0.07350259599013206
+epoch: 112
+loss: 0.07193370268512995
+epoch: 113
+loss: 0.0724904783643209
+epoch: 114
+loss: 0.07451459029928231
+epoch: 115
+loss: 0.07486698413506532
+epoch: 116
+loss: 0.0748069048500978
+epoch: 117
+loss: 0.0750903990597297
+epoch: 118
+loss: 0.07191101652689469
+epoch: 119
+loss: 0.07248862422047517
+IOU: [91.31, 81.77, 93.26, 94.3, 59.14, 97.36, 76.11, 75.05, 49.6, 92.27, 77.86]
+mIOU: 80.73, mIOU_reduced: 80.73, accuracy: 95.33
+epoch: 120
+loss: 0.07270766670505206
+epoch: 121
+loss: 0.07399634854533733
+epoch: 122
+loss: 0.07311597055731675
+epoch: 123
+loss: 0.07211182237817691
+epoch: 124
+loss: 0.07392123494392787
+epoch: 125
+loss: 0.07064970649587803
+epoch: 126
+loss: 0.07267213698763114
+epoch: 127
+loss: 0.07469916534729493
+epoch: 128
+loss: 0.0731879153694862
+epoch: 129
+loss: 0.07186774995464545
+epoch: 130
+loss: 0.07389025351940057
+epoch: 131
+loss: 0.07383681499423125
+epoch: 132
+loss: 0.07330476817412254
+epoch: 133
+loss: 0.07273135038140492
+epoch: 134
+loss: 0.07173807727984893
+epoch: 135
+loss: 0.07215039097727874
+epoch: 136
+loss: 0.07339455321049079
+epoch: 137
+loss: 0.07282217506032723
+epoch: 138
+loss: 0.07340117094990535
+epoch: 139
+loss: 0.07089049989978473
+IOU: [91.45, 81.84, 93.31, 94.32, 59.09, 97.35, 76.36, 75.45, 49.68, 92.28, 77.94]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.38
+epoch: 140
+loss: 0.07379432824941781
+epoch: 141
+loss: 0.07287983825573555
+epoch: 142
+loss: 0.07287859009244503
+epoch: 143
+loss: 0.07201555075171666
+epoch: 144
+loss: 0.0725153189821121
+epoch: 145
+loss: 0.07115170722588515
+epoch: 146
+loss: 0.07220048657976665
+epoch: 147
+loss: 0.07095342731246582
+epoch: 148
+loss: 0.0726728903559538
+epoch: 149
+loss: 0.0707887144616017
+epoch: 150
+loss: 0.0715447414952975
+epoch: 151
+loss: 0.07236137823798718
+epoch: 152
+loss: 0.07000260332073921
+epoch: 153
+loss: 0.07294620401584186
+epoch: 154
+loss: 0.07066659486064544
+epoch: 155
+loss: 0.0722979574631422
+epoch: 156
+loss: 0.07096246992930388
+epoch: 157
+loss: 0.07006622688510479
+epoch: 158
+loss: 0.07038110475509594
+epoch: 159
+loss: 0.07081089436243741
+IOU: [91.47, 81.85, 93.29, 94.3, 59.06, 97.36, 76.68, 74.92, 49.58, 92.29, 78.11]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.38
+epoch: 160
+loss: 0.07178335770582542
+epoch: 161
+loss: 0.07201093922440822
+epoch: 162
+loss: 0.07125149208765763
+epoch: 163
+loss: 0.0700709644991618
+epoch: 164
+loss: 0.07083129777740209
+epoch: 165
+loss: 0.06975284944742154
+epoch: 166
+loss: 0.07057281803244199
+epoch: 167
+loss: 0.07036629338295032
+epoch: 168
+loss: 0.07089497779424374
+epoch: 169
+loss: 0.07137508671253155
+epoch: 170
+loss: 0.06925455375741689
+epoch: 171
+loss: 0.0715105859323954
+epoch: 172
+loss: 0.07116264515580276
+epoch: 173
+loss: 0.07082079713925338
+epoch: 174
+loss: 0.07114377149786705
+epoch: 175
+loss: 0.07008297884693512
+epoch: 176
+loss: 0.07007336349059375
+epoch: 177
+loss: 0.07089329673311649
+epoch: 178
+loss: 0.07156378116745216
+epoch: 179
+loss: 0.07051416276357113
+IOU: [91.46, 81.56, 93.24, 94.36, 59.27, 97.38, 76.57, 75.36, 49.65, 92.32, 78.2]
+mIOU: 80.85, mIOU_reduced: 80.85, accuracy: 95.36
+epoch: 180
+loss: 0.07042372971773148
+epoch: 181
+loss: 0.06971025696167579
+epoch: 182
+loss: 0.06957708213191766
+epoch: 183
+loss: 0.07093365356708184
+epoch: 184
+loss: 0.07160070242407994
+epoch: 185
+loss: 0.07248500533975087
+epoch: 186
+loss: 0.07006616451037236
+epoch: 187
+loss: 0.07051783398940013
+epoch: 188
+loss: 0.07024715296350993
+epoch: 189
+loss: 0.07132309264479539
+epoch: 190
+loss: 0.07260042667770997
+IOU: [91.4, 81.6, 93.24, 94.3, 59.18, 97.37, 76.51, 75.05, 49.92, 92.32, 78.18]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.35
+epoch: 191
+loss: 0.06965851181974778
+IOU: [91.48, 81.65, 93.23, 94.25, 59.34, 97.38, 76.41, 74.95, 49.75, 92.34, 78.35]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.37
+epoch: 192
+loss: 0.07075014958779018
+IOU: [91.41, 81.56, 93.24, 94.34, 59.23, 97.36, 76.57, 75.01, 49.76, 92.29, 78.26]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.35
+epoch: 193
+loss: 0.0702126723451492
+IOU: [91.45, 81.71, 93.28, 94.34, 59.09, 97.38, 76.62, 75.2, 49.63, 92.34, 78.22]
+mIOU: 80.84, mIOU_reduced: 80.84, accuracy: 95.38
+epoch: 194
+loss: 0.07049674913287163
+IOU: [91.42, 81.76, 93.27, 94.33, 59.14, 97.38, 76.48, 74.9, 49.75, 92.34, 78.3]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.37
+epoch: 195
+loss: 0.07056965717138389
+IOU: [91.51, 81.78, 93.26, 94.32, 59.16, 97.37, 76.57, 75.15, 49.76, 92.32, 78.25]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.39
+epoch: 196
+loss: 0.07153187539332952
+IOU: [91.39, 81.65, 93.26, 94.24, 59.12, 97.31, 76.59, 75.34, 50.02, 92.19, 78.07]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.34
+epoch: 197
+loss: 0.06910304381297185
+IOU: [91.47, 81.72, 93.26, 94.34, 59.21, 97.35, 76.56, 75.04, 49.88, 92.25, 78.29]
+mIOU: 80.85, mIOU_reduced: 80.85, accuracy: 95.37
+epoch: 198
+loss: 0.07053396583367617
+IOU: [91.41, 81.62, 93.27, 94.36, 59.08, 97.38, 76.6, 75.21, 49.88, 92.34, 78.33]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.36
+epoch: 199
+loss: 0.06961478168765704
+IOU: [91.42, 81.6, 93.24, 94.33, 59.06, 97.37, 76.5, 75.25, 49.88, 92.32, 78.19]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.36
+Best mIOU: 80.86231578480114
+Best global accuracy: 95.38664817810059
+Training time 1:32:59
+mIOUs: [80.86231578480114, 80.8345121903853]
+global_accuracies: [95.38664817810059, 95.35404443740845]
+{'model_name': 'exp48_decoder26', 'model_type': 'experimental2', 'num_classes': 11, 'ignore_value': 255, 'pretrained_backbone': False, 'change_num_classes': True, 'epochs': 200, 'max_epochs': 200, 'resume': False, 'lr': 0.005, 'momentum': 0.9, 'weight_decay': 0.0001, 'class_weight': None, 'bn_weight_decay': False, 'bn_precise_stats': False, 'bn_precise_num_samples': 600, 'lr_scheduler': 'poly', 'poly_power': 0.9, 'warmup_iters': 1000, 'warmup_factor': 0.1, 'mixed_precision': True, 'runs': 1, 'run': 2, 'RNG_seed': 2, 'loss_type': 'cross_entropy', 'eval_while_train': True, 'exclude_classes': [], 'warmup_iter': 3, 'num_iter': 30, 'benchmark_loader': True, 'benchmark_model': True, 'dataset_name': 'camvid', 'dataset_dir': 'CamVid3', 'batch_size': 12, 'train_min_size': 288, 'train_max_size': 1152, 'train_crop_size': [720, 960], 'val_input_size': 720, 'val_label_size': 720, 'aug_mode': 'baseline', 'resize_mode': 'uniform', 'edge_aware_crop': False, 'boost_rare_classes': False, 'num_workers': 6, 'class_uniform_pct': 0, 'train_split': 'trainval', 'val_split': 'test', 'max_eval': 10000, 'validate_train_loader': False, 'eval_print_every': 1000, 'train_print_every': 400, 'pretrained_path': 'checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1', 'save_every_k_epochs': 20, 'save_last_k_epochs': 10, 'save_dir': 'checkpoints', 'log_dir': 'training_log', 'save_name': 'camvid_exp48_decoder26_200_epochs_288_1152_resize', 'save_best_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_run2', 'save_latest_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'resume_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'log_path': 'training_log/camvid_exp48_decoder26_200_epochs_288_1152_resize_log.txt'}
+run: 2
+epoch: 0
+loss: 1.8187846159323668
+IOU: [75.8, 45.09, 85.69, 15.47, 3.7, 65.2, 1.89, 0.26, 2.05, 0.02, 1.32]
+mIOU: 26.95, mIOU_reduced: 26.95, accuracy: 74.82
+epoch: 1
+loss: 0.839847995684697
+epoch: 2
+loss: 0.526915478400695
+epoch: 3
+loss: 0.37405065695444745
+epoch: 4
+loss: 0.30858039435667867
+epoch: 5
+loss: 0.2660299990421686
+epoch: 6
+loss: 0.24146384038986304
+epoch: 7
+loss: 0.22042400103348953
+epoch: 8
+loss: 0.20492417613665262
+epoch: 9
+loss: 0.17731103492088807
+epoch: 10
+loss: 0.16711971010917273
+epoch: 11
+loss: 0.1553726689173625
+epoch: 12
+loss: 0.14967619226529047
+epoch: 13
+loss: 0.13883026460042366
+epoch: 14
+loss: 0.13499747082973138
+epoch: 15
+loss: 0.12934668534077132
+epoch: 16
+loss: 0.12597950471517366
+epoch: 17
+loss: 0.12125401867505832
+epoch: 18
+loss: 0.11969555494112846
+epoch: 19
+loss: 0.11203235177657543
+IOU: [90.81, 80.27, 92.65, 93.83, 0.0, 96.81, 69.67, 73.12, 44.15, 91.14, 69.65]
+mIOU: 72.92, mIOU_reduced: 72.92, accuracy: 94.77
+epoch: 20
+loss: 0.1133729202242998
+epoch: 21
+loss: 0.10996653712712802
+epoch: 22
+loss: 0.11232802806756435
+epoch: 23
+loss: 0.10449554885809238
+epoch: 24
+loss: 0.10538262377182643
+epoch: 25
+loss: 0.10723008482884137
+epoch: 26
+loss: 0.1022949979091302
+epoch: 27
+loss: 0.10011222786628284
+epoch: 28
+loss: 0.09738935797642438
+epoch: 29
+loss: 0.0990043248121555
+epoch: 30
+loss: 0.0967373924377637
+epoch: 31
+loss: 0.0966142517251846
+epoch: 32
+loss: 0.09409665793944628
+epoch: 33
+loss: 0.09455288067842141
+epoch: 34
+loss: 0.09352781948370811
+epoch: 35
+loss: 0.09424143131726827
+epoch: 36
+loss: 0.0931926537782718
+epoch: 37
+loss: 0.09366860374426231
+epoch: 38
+loss: 0.0913719198642633
+epoch: 39
+loss: 0.08925473250639744
+IOU: [91.15, 81.13, 93.1, 94.2, 16.71, 97.14, 73.85, 74.41, 47.14, 91.83, 75.37]
+mIOU: 76.0, mIOU_reduced: 76.0, accuracy: 95.09
+epoch: 40
+loss: 0.09111685917163506
+epoch: 41
+loss: 0.08772774460988167
+epoch: 42
+loss: 0.09057801618025853
+epoch: 43
+loss: 0.08682230783578677
+epoch: 44
+loss: 0.08695102291993606
+epoch: 45
+loss: 0.08660339812437694
+epoch: 46
+loss: 0.0851136157527948
+epoch: 47
+loss: 0.084425565523979
+epoch: 48
+loss: 0.08712920833092469
+epoch: 49
+loss: 0.08445167541503906
+epoch: 50
+loss: 0.08612991850345562
+epoch: 51
+loss: 0.08241032245449531
+epoch: 52
+loss: 0.08328561207804924
+epoch: 53
+loss: 0.08510773944166991
+epoch: 54
+loss: 0.08352021978069575
+epoch: 55
+loss: 0.08341203352961785
+epoch: 56
+loss: 0.0814384896403704
+epoch: 57
+loss: 0.08321496853843713
+epoch: 58
+loss: 0.08341622085143359
+epoch: 59
+loss: 0.08288690065726256
+IOU: [91.19, 81.18, 93.22, 94.23, 52.8, 97.25, 75.32, 75.42, 49.15, 92.15, 77.0]
+mIOU: 79.9, mIOU_reduced: 79.9, accuracy: 95.24
+epoch: 60
+loss: 0.08303322203648396
+epoch: 61
+loss: 0.08150100708007812
+epoch: 62
+loss: 0.08066053440173467
+epoch: 63
+loss: 0.08122315429724179
+epoch: 64
+loss: 0.0813088833521574
+epoch: 65
+loss: 0.08216648797194163
+epoch: 66
+loss: 0.07832485867234376
+epoch: 67
+loss: 0.08006395657475178
+epoch: 68
+loss: 0.07940399293334056
+epoch: 69
+loss: 0.08078274302757703
+epoch: 70
+loss: 0.08081373963982631
+epoch: 71
+loss: 0.07972284587912071
+epoch: 72
+loss: 0.07903567672922061
+epoch: 73
+loss: 0.08049233764027938
+epoch: 74
+loss: 0.07828874943348077
+epoch: 75
+loss: 0.07837207051805961
+epoch: 76
+loss: 0.07991711623393573
+epoch: 77
+loss: 0.07987960342031258
+epoch: 78
+loss: 0.07960700941009399
+epoch: 79
+loss: 0.07731318445159839
+IOU: [91.41, 81.54, 93.25, 94.21, 58.36, 97.26, 75.82, 74.99, 49.4, 92.13, 77.44]
+mIOU: 80.53, mIOU_reduced: 80.53, accuracy: 95.31
+epoch: 80
+loss: 0.07645707243146041
+epoch: 81
+loss: 0.07669433827201526
+epoch: 82
+loss: 0.0770539006170554
+epoch: 83
+loss: 0.07721096793046364
+epoch: 84
+loss: 0.0770931050945551
+epoch: 85
+loss: 0.07609976465121293
+epoch: 86
+loss: 0.07759551809002192
+epoch: 87
+loss: 0.07774859428023681
+epoch: 88
+loss: 0.0752330699410194
+epoch: 89
+loss: 0.07764923228667332
+epoch: 90
+loss: 0.07786370001924343
+epoch: 91
+loss: 0.07583142845676495
+epoch: 92
+loss: 0.07661358735118157
+epoch: 93
+loss: 0.07576712259115317
+epoch: 94
+loss: 0.0753036922751329
+epoch: 95
+loss: 0.07578751998834121
+epoch: 96
+loss: 0.07311150412528943
+epoch: 97
+loss: 0.07392342713398811
+epoch: 98
+loss: 0.07626062574294898
+epoch: 99
+loss: 0.07606331354532486
+IOU: [91.44, 81.76, 93.3, 94.22, 58.99, 97.28, 75.96, 74.66, 49.94, 92.17, 77.35]
+mIOU: 80.64, mIOU_reduced: 80.64, accuracy: 95.34
+epoch: 100
+loss: 0.07649703467121491
+epoch: 101
+loss: 0.07467374329765637
+epoch: 102
+loss: 0.07339544622943951
+epoch: 103
+loss: 0.07498546852133213
+epoch: 104
+loss: 0.0741171747063979
+epoch: 105
+loss: 0.07591349536027664
+epoch: 106
+loss: 0.0744988525716158
+epoch: 107
+loss: 0.07595981313632084
+epoch: 108
+loss: 0.07474851971253371
+epoch: 109
+loss: 0.0750298750324127
+epoch: 110
+loss: 0.0737273466701691
+epoch: 111
+loss: 0.07352870979752296
+epoch: 112
+loss: 0.07166344271256374
+epoch: 113
+loss: 0.07245691435841414
+epoch: 114
+loss: 0.07466511753125069
+epoch: 115
+loss: 0.07486457998553912
+epoch: 116
+loss: 0.07469451226867162
+epoch: 117
+loss: 0.07513166572421025
+epoch: 118
+loss: 0.07197424817161682
+epoch: 119
+loss: 0.07249785119142288
+IOU: [91.31, 81.68, 93.3, 94.4, 59.21, 97.36, 76.21, 75.16, 49.88, 92.35, 77.84]
+mIOU: 80.79, mIOU_reduced: 80.79, accuracy: 95.34
+epoch: 120
+loss: 0.0726562289473338
+epoch: 121
+loss: 0.07412500278307842
+epoch: 122
+loss: 0.07313778929603405
+epoch: 123
+loss: 0.07206605050044182
+epoch: 124
+loss: 0.0740059355321603
+epoch: 125
+loss: 0.07072609901810303
+epoch: 126
+loss: 0.07252859820922215
+epoch: 127
+loss: 0.07472954012262516
+epoch: 128
+loss: 0.07319629908754276
+epoch: 129
+loss: 0.07195504687917538
+epoch: 130
+loss: 0.07391643696106397
+epoch: 131
+loss: 0.07373316404529107
+epoch: 132
+loss: 0.07325889533146834
+epoch: 133
+loss: 0.07273677163399182
+epoch: 134
+loss: 0.07184824146903478
+epoch: 135
+loss: 0.07222851881614098
+epoch: 136
+loss: 0.07333614830023204
+epoch: 137
+loss: 0.0727456770837307
+epoch: 138
+loss: 0.07330553959577511
+epoch: 139
+loss: 0.07115120096848561
+IOU: [91.45, 81.75, 93.32, 94.39, 59.25, 97.36, 76.33, 75.54, 49.86, 92.36, 77.57]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.38
+epoch: 140
+loss: 0.07394399016331403
+epoch: 141
+loss: 0.07274866104125977
+epoch: 142
+loss: 0.07276284646911499
+epoch: 143
+loss: 0.07193516767941989
+epoch: 144
+loss: 0.07251803433665863
+epoch: 145
+loss: 0.07110432497201821
+epoch: 146
+loss: 0.07211386794463182
+epoch: 147
+loss: 0.07097125855775979
+epoch: 148
+loss: 0.07263263983604236
+epoch: 149
+loss: 0.07081199599764286
+epoch: 150
+loss: 0.07153140638883297
+epoch: 151
+loss: 0.07230181055955398
+epoch: 152
+loss: 0.06992047461561668
+epoch: 153
+loss: 0.07304932454075569
+epoch: 154
+loss: 0.07066954423983891
+epoch: 155
+loss: 0.07223735864345844
+epoch: 156
+loss: 0.0708535723388195
+epoch: 157
+loss: 0.07025756524541439
+epoch: 158
+loss: 0.07052774068254691
+epoch: 159
+loss: 0.07080210965031232
+IOU: [91.49, 81.79, 93.31, 94.38, 59.17, 97.36, 76.64, 75.1, 49.72, 92.36, 78.13]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.39
+epoch: 160
+loss: 0.07186705905657548
+epoch: 161
+loss: 0.07179462384337033
+epoch: 162
+loss: 0.07124681703937359
+epoch: 163
+loss: 0.07004436430258629
+epoch: 164
+loss: 0.07088481176358002
+epoch: 165
+loss: 0.06972846579857361
+epoch: 166
+loss: 0.07049875887922752
+epoch: 167
+loss: 0.07036705534809674
+epoch: 168
+loss: 0.07111054219496556
+epoch: 169
+loss: 0.07161330431699753
+epoch: 170
+loss: 0.06929800095848548
+epoch: 171
+loss: 0.07157418800470157
+epoch: 172
+loss: 0.07116568795381448
+epoch: 173
+loss: 0.07099928840612754
+epoch: 174
+loss: 0.07115322036238816
+epoch: 175
+loss: 0.0700585034986337
+epoch: 176
+loss: 0.07011706047715285
+epoch: 177
+loss: 0.07098293352203491
+epoch: 178
+loss: 0.07157705982144062
+epoch: 179
+loss: 0.07053155824542046
+IOU: [91.45, 81.49, 93.26, 94.44, 59.41, 97.38, 76.62, 75.47, 49.79, 92.39, 78.13]
+mIOU: 80.89, mIOU_reduced: 80.89, accuracy: 95.37
+epoch: 180
+loss: 0.07065158977340429
+epoch: 181
+loss: 0.06969034394774681
+epoch: 182
+loss: 0.06961346217072927
+epoch: 183
+loss: 0.07101255817673145
+epoch: 184
+loss: 0.07159071301038449
+epoch: 185
+loss: 0.07246039530787712
+epoch: 186
+loss: 0.0701182372868061
+epoch: 187
+loss: 0.07047145823255563
+epoch: 188
+loss: 0.07025159207674173
+epoch: 189
+loss: 0.07155737013388903
+epoch: 190
+loss: 0.07275899662039219
+IOU: [91.41, 81.55, 93.26, 94.38, 59.42, 97.37, 76.51, 75.35, 50.08, 92.41, 77.96]
+mIOU: 80.88, mIOU_reduced: 80.88, accuracy: 95.36
+epoch: 191
+loss: 0.06966979505541997
+IOU: [91.51, 81.61, 93.24, 94.35, 59.35, 97.38, 76.44, 75.34, 49.83, 92.43, 78.14]
+mIOU: 80.87, mIOU_reduced: 80.87, accuracy: 95.38
+epoch: 192
+loss: 0.07089793605682178
+IOU: [91.42, 81.49, 93.25, 94.43, 59.32, 97.37, 76.58, 75.2, 49.91, 92.39, 78.29]
+mIOU: 80.88, mIOU_reduced: 80.88, accuracy: 95.36
+epoch: 193
+loss: 0.07028768001458584
+IOU: [91.45, 81.64, 93.3, 94.41, 59.16, 97.38, 76.68, 75.42, 49.67, 92.41, 78.2]
+mIOU: 80.88, mIOU_reduced: 80.88, accuracy: 95.38
+epoch: 194
+loss: 0.07049407485203865
+IOU: [91.44, 81.7, 93.29, 94.41, 59.3, 97.38, 76.41, 75.22, 49.9, 92.43, 78.02]
+mIOU: 80.87, mIOU_reduced: 80.87, accuracy: 95.38
+epoch: 195
+loss: 0.07049504829904972
+IOU: [91.53, 81.74, 93.28, 94.41, 59.36, 97.38, 76.48, 75.38, 49.9, 92.41, 77.98]
+mIOU: 80.89, mIOU_reduced: 80.89, accuracy: 95.4
+epoch: 196
+loss: 0.0715460064701545
+IOU: [91.4, 81.6, 93.28, 94.32, 59.38, 97.32, 76.62, 75.57, 50.25, 92.3, 78.13]
+mIOU: 80.92, mIOU_reduced: 80.92, accuracy: 95.35
+epoch: 197
+loss: 0.06913415495401774
+IOU: [91.49, 81.67, 93.27, 94.44, 59.38, 97.36, 76.56, 75.21, 50.03, 92.35, 78.05]
+mIOU: 80.89, mIOU_reduced: 80.89, accuracy: 95.38
+epoch: 198
+loss: 0.07049642627437909
+IOU: [91.43, 81.59, 93.28, 94.45, 59.37, 97.38, 76.63, 75.42, 50.04, 92.41, 78.23]
+mIOU: 80.93, mIOU_reduced: 80.93, accuracy: 95.37
+epoch: 199
+loss: 0.06976142831337757
+IOU: [91.46, 81.57, 93.26, 94.42, 59.22, 97.38, 76.53, 75.54, 49.94, 92.42, 78.2]
+mIOU: 80.9, mIOU_reduced: 80.9, accuracy: 95.37
+Best mIOU: 80.9288031838157
+Best global accuracy: 95.3961730003357
+Training time 1:32:35
+{'model_name': 'exp48_decoder26', 'model_type': 'experimental2', 'num_classes': 11, 'ignore_value': 255, 'pretrained_backbone': False, 'change_num_classes': True, 'epochs': 200, 'max_epochs': 200, 'resume': False, 'lr': 0.005, 'momentum': 0.9, 'weight_decay': 0.0001, 'class_weight': None, 'bn_weight_decay': False, 'bn_precise_stats': False, 'bn_precise_num_samples': 600, 'lr_scheduler': 'poly', 'poly_power': 0.9, 'warmup_iters': 1000, 'warmup_factor': 0.1, 'mixed_precision': True, 'runs': 1, 'run': 3, 'RNG_seed': 3, 'loss_type': 'cross_entropy', 'eval_while_train': True, 'exclude_classes': [], 'warmup_iter': 3, 'num_iter': 30, 'benchmark_loader': True, 'benchmark_model': True, 'dataset_name': 'camvid', 'dataset_dir': 'CamVid3', 'batch_size': 12, 'train_min_size': 288, 'train_max_size': 1152, 'train_crop_size': [720, 960], 'val_input_size': 720, 'val_label_size': 720, 'aug_mode': 'baseline', 'resize_mode': 'uniform', 'edge_aware_crop': False, 'boost_rare_classes': False, 'num_workers': 6, 'class_uniform_pct': 0, 'train_split': 'trainval', 'val_split': 'test', 'max_eval': 10000, 'validate_train_loader': False, 'eval_print_every': 1000, 'train_print_every': 400, 'pretrained_path': 'checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1', 'save_every_k_epochs': 20, 'save_last_k_epochs': 10, 'save_dir': 'checkpoints', 'log_dir': 'training_log', 'save_name': 'camvid_exp48_decoder26_200_epochs_288_1152_resize', 'save_best_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_run3', 'save_latest_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'resume_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'log_path': 'training_log/camvid_exp48_decoder26_200_epochs_288_1152_resize_log.txt'}
+run: 3
+epoch: 0
+loss: 1.9196481368480585
+IOU: [82.97, 67.27, 58.37, 2.03, 0.0, 83.02, 0.0, 5.61, 0.18, 0.05, 11.78]
+mIOU: 28.3, mIOU_reduced: 28.3, accuracy: 76.78
+epoch: 1
+loss: 0.8599333717272832
+epoch: 2
+loss: 0.5337055126825968
+epoch: 3
+loss: 0.3838180517539
+epoch: 4
+loss: 0.3149867657667551
+epoch: 5
+loss: 0.2704611328931955
+epoch: 6
+loss: 0.24688741870415518
+epoch: 7
+loss: 0.22645279803337195
+epoch: 8
+loss: 0.21221169485495642
+epoch: 9
+loss: 0.18533803025881448
+epoch: 10
+loss: 0.17608630810028467
+epoch: 11
+loss: 0.16561463054938194
+epoch: 12
+loss: 0.16072712380152482
+epoch: 13
+loss: 0.14846514776731148
+epoch: 14
+loss: 0.14465488015841216
+epoch: 15
+loss: 0.1371236747274032
+epoch: 16
+loss: 0.13178074894807276
+epoch: 17
+loss: 0.1259837691218425
+epoch: 18
+loss: 0.12363492945830028
+epoch: 19
+loss: 0.11448223755145684
+IOU: [90.53, 80.56, 92.44, 93.68, 0.0, 96.81, 71.81, 74.45, 40.22, 91.16, 69.56]
+mIOU: 72.84, mIOU_reduced: 72.84, accuracy: 94.72
+epoch: 20
+loss: 0.11487711946933697
+epoch: 21
+loss: 0.11124108693538567
+epoch: 22
+loss: 0.11324366850730701
+epoch: 23
+loss: 0.10479390831329884
+epoch: 24
+loss: 0.1061884010067353
+epoch: 25
+loss: 0.10727960730974491
+epoch: 26
+loss: 0.10281184506721985
+epoch: 27
+loss: 0.1002717340985934
+epoch: 28
+loss: 0.09777564498094413
+epoch: 29
+loss: 0.0988918179884935
+epoch: 30
+loss: 0.0968611349280064
+epoch: 31
+loss: 0.09648652011767411
+epoch: 32
+loss: 0.09386015473267971
+epoch: 33
+loss: 0.09441186353946343
+epoch: 34
+loss: 0.09331458864303735
+epoch: 35
+loss: 0.09371747305760017
+epoch: 36
+loss: 0.09270524615660691
+epoch: 37
+loss: 0.09304045771176998
+epoch: 38
+loss: 0.09111845340484227
+epoch: 39
+loss: 0.08893352192945969
+IOU: [91.09, 81.05, 93.02, 94.11, 47.66, 97.18, 74.96, 75.4, 48.29, 91.97, 76.01]
+mIOU: 79.16, mIOU_reduced: 79.16, accuracy: 95.16
+epoch: 40
+loss: 0.09055631550458762
+epoch: 41
+loss: 0.08704493596003605
+epoch: 42
+loss: 0.09010806354956749
+epoch: 43
+loss: 0.08626942049998504
+epoch: 44
+loss: 0.08639627790603882
+epoch: 45
+loss: 0.08595053660563934
+epoch: 46
+loss: 0.0844571170134422
+epoch: 47
+loss: 0.08406399668027194
+epoch: 48
+loss: 0.08671930642464222
+epoch: 49
+loss: 0.08428287133574486
+epoch: 50
+loss: 0.08560854358932911
+epoch: 51
+loss: 0.08220987050579144
+epoch: 52
+loss: 0.08278406182160744
+epoch: 53
+loss: 0.08448868550551243
+epoch: 54
+loss: 0.08321823017337383
+epoch: 55
+loss: 0.08300806983159138
+epoch: 56
+loss: 0.08089788344043952
+epoch: 57
+loss: 0.08281323972802895
+epoch: 58
+loss: 0.08281724537030244
+epoch: 59
+loss: 0.08252259171926059
+IOU: [91.12, 81.02, 93.14, 94.16, 54.78, 97.26, 75.68, 76.39, 49.28, 92.2, 77.12]
+mIOU: 80.2, mIOU_reduced: 80.2, accuracy: 95.23
+epoch: 60
+loss: 0.08277081640867087
+epoch: 61
+loss: 0.08131066098427162
+epoch: 62
+loss: 0.08032781363297732
+epoch: 63
+loss: 0.08075782026235874
+epoch: 64
+loss: 0.08102835743473126
+epoch: 65
+loss: 0.08188806197200066
+epoch: 66
+loss: 0.07799674952641511
+epoch: 67
+loss: 0.07981753206023803
+epoch: 68
+loss: 0.07939406207356697
+epoch: 69
+loss: 0.08045642498211983
+epoch: 70
+loss: 0.08063771967322399
+epoch: 71
+loss: 0.07955664673294777
+epoch: 72
+loss: 0.07854421064257622
+epoch: 73
+loss: 0.08003983207238026
+epoch: 74
+loss: 0.07806657006343205
+epoch: 75
+loss: 0.07828001534709564
+epoch: 76
+loss: 0.07969026401256904
+epoch: 77
+loss: 0.0796943757778559
+epoch: 78
+loss: 0.07939577952791484
+epoch: 79
+loss: 0.07696038006972043
+IOU: [91.38, 81.35, 93.16, 94.23, 57.19, 97.28, 76.09, 75.8, 49.47, 92.17, 77.44]
+mIOU: 80.51, mIOU_reduced: 80.51, accuracy: 95.3
+epoch: 80
+loss: 0.07607043381684865
+epoch: 81
+loss: 0.07643306255340576
+epoch: 82
+loss: 0.07678635236926568
+epoch: 83
+loss: 0.07707555592060089
+epoch: 84
+loss: 0.07688733658347374
+epoch: 85
+loss: 0.07591370340341176
+epoch: 86
+loss: 0.0773512544349218
+epoch: 87
+loss: 0.07750776906808217
+epoch: 88
+loss: 0.07493710326842773
+epoch: 89
+loss: 0.0776017723748317
+epoch: 90
+loss: 0.07769391485131703
+epoch: 91
+loss: 0.07559331611562999
+epoch: 92
+loss: 0.07609433910021415
+epoch: 93
+loss: 0.07559879668630086
+epoch: 94
+loss: 0.07507650649700409
+epoch: 95
+loss: 0.07558223328147179
+epoch: 96
+loss: 0.07306233927225456
+epoch: 97
+loss: 0.07360415131999896
+epoch: 98
+loss: 0.07593179484590507
+epoch: 99
+loss: 0.07584661254898095
+IOU: [91.44, 81.71, 93.27, 94.24, 58.0, 97.29, 76.22, 75.69, 50.1, 92.16, 77.38]
+mIOU: 80.68, mIOU_reduced: 80.68, accuracy: 95.35
+epoch: 100
+loss: 0.07603760197376594
+epoch: 101
+loss: 0.07426893988098854
+epoch: 102
+loss: 0.0733689739344976
+epoch: 103
+loss: 0.07460252529917619
+epoch: 104
+loss: 0.07398605222503345
+epoch: 105
+loss: 0.0757098369873487
+epoch: 106
+loss: 0.07403410894748493
+epoch: 107
+loss: 0.07591850367876199
+epoch: 108
+loss: 0.07446804566261096
+epoch: 109
+loss: 0.07483575512201358
+epoch: 110
+loss: 0.07345775400216763
+epoch: 111
+loss: 0.07316337783749287
+epoch: 112
+loss: 0.07152026910812427
+epoch: 113
+loss: 0.07216393164335153
+epoch: 114
+loss: 0.0742377499357248
+epoch: 115
+loss: 0.07481881231069565
+epoch: 116
+loss: 0.07460608763190416
+epoch: 117
+loss: 0.07478291636858231
+epoch: 118
+loss: 0.07171511000547653
+epoch: 119
+loss: 0.07217133551453933
+IOU: [91.39, 81.71, 93.28, 94.38, 58.92, 97.37, 76.37, 76.22, 50.08, 92.35, 77.51]
+mIOU: 80.87, mIOU_reduced: 80.87, accuracy: 95.37
+epoch: 120
+loss: 0.07233493593640816
+epoch: 121
+loss: 0.07385823550896767
+epoch: 122
+loss: 0.07300152199772689
+epoch: 123
+loss: 0.07175179857474107
+epoch: 124
+loss: 0.07378009678079532
+epoch: 125
+loss: 0.07041437303026517
+epoch: 126
+loss: 0.0722797884581945
+epoch: 127
+loss: 0.07438449638012128
+epoch: 128
+loss: 0.0729615307198121
+epoch: 129
+loss: 0.07179405492467758
+epoch: 130
+loss: 0.07368823675773083
+epoch: 131
+loss: 0.0735215809291754
+epoch: 132
+loss: 0.07303584529421268
+epoch: 133
+loss: 0.07270011076560387
+epoch: 134
+loss: 0.07144127891231807
+epoch: 135
+loss: 0.0720054101294432
+epoch: 136
+loss: 0.07302220452290314
+epoch: 137
+loss: 0.07261254533361165
+epoch: 138
+loss: 0.07322949667771657
+epoch: 139
+loss: 0.07074021748625316
+IOU: [91.5, 81.71, 93.28, 94.37, 59.08, 97.37, 76.52, 76.43, 50.16, 92.37, 77.49]
+mIOU: 80.93, mIOU_reduced: 80.93, accuracy: 95.4
+epoch: 140
+loss: 0.07352581639320423
+epoch: 141
+loss: 0.07249408005139767
+epoch: 142
+loss: 0.07266152716982059
+epoch: 143
+loss: 0.07183690435993366
+epoch: 144
+loss: 0.07220722820896369
+epoch: 145
+loss: 0.07083955865639907
+epoch: 146
+loss: 0.07184617527020283
+epoch: 147
+loss: 0.0707538029513298
+epoch: 148
+loss: 0.0724133795652634
+epoch: 149
+loss: 0.07077414017075147
+epoch: 150
+loss: 0.07127338141585007
+epoch: 151
+loss: 0.07213599215715359
+epoch: 152
+loss: 0.06989819804827373
+epoch: 153
+loss: 0.07274907273359787
+epoch: 154
+loss: 0.07050118853266422
+epoch: 155
+loss: 0.07201762306384552
+epoch: 156
+loss: 0.07067295020589462
+epoch: 157
+loss: 0.06993804146081974
+epoch: 158
+loss: 0.07009796139139396
+epoch: 159
+loss: 0.07055810361336438
+IOU: [91.54, 81.73, 93.26, 94.36, 59.24, 97.37, 76.79, 76.29, 50.01, 92.35, 77.73]
+mIOU: 80.97, mIOU_reduced: 80.97, accuracy: 95.41
+epoch: 160
+loss: 0.07170821468417461
+epoch: 161
+loss: 0.07160047546793254
+epoch: 162
+loss: 0.07111793040083005
+epoch: 163
+loss: 0.0699014937839447
+epoch: 164
+loss: 0.07055506396752137
+epoch: 165
+loss: 0.06937047313803281
+epoch: 166
+loss: 0.07034455860654514
+epoch: 167
+loss: 0.0701874165962904
+epoch: 168
+loss: 0.0709231086075306
+epoch: 169
+loss: 0.07126019369715299
+epoch: 170
+loss: 0.06920048699547084
+epoch: 171
+loss: 0.0713025981034988
+epoch: 172
+loss: 0.0707193940686874
+epoch: 173
+loss: 0.0706546985759185
+epoch: 174
+loss: 0.07089146092916146
+epoch: 175
+loss: 0.06980430869719921
+epoch: 176
+loss: 0.06991682211175942
+epoch: 177
+loss: 0.07072860546983205
+epoch: 178
+loss: 0.0712325339898085
+epoch: 179
+loss: 0.07026506110261647
+IOU: [91.52, 81.39, 93.17, 94.41, 59.73, 97.39, 76.79, 76.53, 50.09, 92.41, 77.69]
+mIOU: 81.01, mIOU_reduced: 81.01, accuracy: 95.38
+epoch: 180
+loss: 0.07058073838169758
+epoch: 181
+loss: 0.0694546361382191
+epoch: 182
+loss: 0.06926162865681526
+epoch: 183
+loss: 0.07087085940516911
+epoch: 184
+loss: 0.07138448829452197
+epoch: 185
+loss: 0.07218263909602776
+epoch: 186
+loss: 0.06980966642881051
+epoch: 187
+loss: 0.07045052219659854
+epoch: 188
+loss: 0.070064722154385
+epoch: 189
+loss: 0.07111756217021209
+epoch: 190
+loss: 0.07254592510752189
+IOU: [91.48, 81.42, 93.18, 94.36, 59.47, 97.39, 76.7, 76.43, 50.33, 92.44, 77.64]
+mIOU: 80.98, mIOU_reduced: 80.98, accuracy: 95.37
+epoch: 191
+loss: 0.06950523475041756
+IOU: [91.58, 81.49, 93.16, 94.33, 59.64, 97.4, 76.64, 76.4, 50.18, 92.45, 77.66]
+mIOU: 80.99, mIOU_reduced: 80.99, accuracy: 95.39
+epoch: 192
+loss: 0.07050329379928418
+IOU: [91.5, 81.43, 93.19, 94.37, 59.52, 97.38, 76.72, 76.3, 50.16, 92.4, 77.69]
+mIOU: 80.97, mIOU_reduced: 80.97, accuracy: 95.38
+epoch: 193
+loss: 0.06996998563408852
+IOU: [91.53, 81.55, 93.22, 94.39, 59.49, 97.4, 76.8, 76.42, 49.99, 92.45, 77.76]
+mIOU: 81.0, mIOU_reduced: 81.0, accuracy: 95.4
+epoch: 194
+loss: 0.07042793748088372
+IOU: [91.52, 81.61, 93.22, 94.37, 59.39, 97.4, 76.66, 76.32, 50.13, 92.45, 77.63]
+mIOU: 80.97, mIOU_reduced: 80.97, accuracy: 95.4
+epoch: 195
+loss: 0.0704269979435664
+IOU: [91.59, 81.62, 93.2, 94.38, 59.41, 97.39, 76.7, 76.44, 50.22, 92.42, 77.64]
+mIOU: 81.0, mIOU_reduced: 81.0, accuracy: 95.41
+epoch: 196
+loss: 0.07130226550193933
+IOU: [91.5, 81.48, 93.2, 94.29, 59.62, 97.33, 76.74, 76.63, 50.49, 92.3, 77.72]
+mIOU: 81.03, mIOU_reduced: 81.03, accuracy: 95.37
+epoch: 197
+loss: 0.06890630960846558
+IOU: [91.56, 81.57, 93.2, 94.39, 59.52, 97.36, 76.76, 76.33, 50.23, 92.35, 77.77]
+mIOU: 81.0, mIOU_reduced: 81.0, accuracy: 95.39
+epoch: 198
+loss: 0.0703656863516722
+IOU: [91.5, 81.48, 93.21, 94.42, 59.39, 97.4, 76.77, 76.5, 50.37, 92.44, 77.84]
+mIOU: 81.03, mIOU_reduced: 81.03, accuracy: 95.39
+epoch: 199
+loss: 0.06950736523438723
+IOU: [91.52, 81.47, 93.18, 94.39, 59.36, 97.39, 76.68, 76.59, 50.29, 92.44, 77.69]
+mIOU: 81.0, mIOU_reduced: 81.0, accuracy: 95.39
+Best mIOU: 81.02897435968572
+Best global accuracy: 95.4094409942627
+Training time 1:32:32
+{'model_name': 'exp48_decoder26', 'model_type': 'experimental2', 'num_classes': 11, 'ignore_value': 255, 'pretrained_backbone': False, 'change_num_classes': True, 'epochs': 200, 'max_epochs': 200, 'resume': False, 'lr': 0.005, 'momentum': 0.9, 'weight_decay': 0.0001, 'class_weight': None, 'bn_weight_decay': False, 'bn_precise_stats': False, 'bn_precise_num_samples': 600, 'lr_scheduler': 'poly', 'poly_power': 0.9, 'warmup_iters': 1000, 'warmup_factor': 0.1, 'mixed_precision': True, 'runs': 1, 'run': 4, 'RNG_seed': 4, 'loss_type': 'cross_entropy', 'eval_while_train': True, 'exclude_classes': [], 'warmup_iter': 3, 'num_iter': 30, 'benchmark_loader': True, 'benchmark_model': True, 'dataset_name': 'camvid', 'dataset_dir': 'CamVid3', 'batch_size': 12, 'train_min_size': 288, 'train_max_size': 1152, 'train_crop_size': [720, 960], 'val_input_size': 720, 'val_label_size': 720, 'aug_mode': 'baseline', 'resize_mode': 'uniform', 'edge_aware_crop': False, 'boost_rare_classes': False, 'num_workers': 6, 'class_uniform_pct': 0, 'train_split': 'trainval', 'val_split': 'test', 'max_eval': 10000, 'validate_train_loader': False, 'eval_print_every': 1000, 'train_print_every': 400, 'pretrained_path': 'checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1', 'save_every_k_epochs': 20, 'save_last_k_epochs': 10, 'save_dir': 'checkpoints', 'log_dir': 'training_log', 'save_name': 'camvid_exp48_decoder26_200_epochs_288_1152_resize', 'save_best_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_run4', 'save_latest_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'resume_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'log_path': 'training_log/camvid_exp48_decoder26_200_epochs_288_1152_resize_log.txt'}
+run: 4
+epoch: 0
+loss: 2.1430620505259586
+IOU: [81.48, 54.01, 82.19, 7.75, 0.27, 62.08, 0.0, 3.14, 6.64, 0.31, 0.26]
+mIOU: 27.1, mIOU_reduced: 27.1, accuracy: 74.57
+epoch: 1
+loss: 0.9892470500408075
+epoch: 2
+loss: 0.5940242126966134
+epoch: 3
+loss: 0.4087038819606488
+epoch: 4
+loss: 0.32259399271928346
+epoch: 5
+loss: 0.27326452082548386
+epoch: 6
+loss: 0.24706251651812822
+epoch: 7
+loss: 0.2270375608633726
+epoch: 8
+loss: 0.2133630640231646
+epoch: 9
+loss: 0.1846283555794985
+epoch: 10
+loss: 0.17405824477855975
+epoch: 11
+loss: 0.16183050435322982
+epoch: 12
+loss: 0.1551826175970909
+epoch: 13
+loss: 0.14290381108339018
+epoch: 14
+loss: 0.13832885600053346
+epoch: 15
+loss: 0.1314456665363067
+epoch: 16
+loss: 0.1270253176872547
+epoch: 17
+loss: 0.12152546797043239
+epoch: 18
+loss: 0.12026692067201321
+epoch: 19
+loss: 0.11218992639810611
+IOU: [90.68, 79.89, 92.69, 93.79, 0.0, 96.86, 72.12, 72.39, 43.61, 91.17, 71.4]
+mIOU: 73.15, mIOU_reduced: 73.15, accuracy: 94.74
+epoch: 20
+loss: 0.11330909759570391
+epoch: 21
+loss: 0.1096022027807358
+epoch: 22
+loss: 0.11187281325841561
+epoch: 23
+loss: 0.10378890140698506
+epoch: 24
+loss: 0.10537798893757355
+epoch: 25
+loss: 0.10714416759900558
+epoch: 26
+loss: 0.10206915438175201
+epoch: 27
+loss: 0.099849362212878
+epoch: 28
+loss: 0.0973872700944925
+epoch: 29
+loss: 0.098673382630715
+epoch: 30
+loss: 0.0966412243552697
+epoch: 31
+loss: 0.09632226442679381
+epoch: 32
+loss: 0.09375491356238341
+epoch: 33
+loss: 0.09427109150550304
+epoch: 34
+loss: 0.09338253851120289
+epoch: 35
+loss: 0.09397384190024474
+epoch: 36
+loss: 0.09282625256440578
+epoch: 37
+loss: 0.09344050116263904
+epoch: 38
+loss: 0.09121634390873787
+epoch: 39
+loss: 0.08898184104607655
+IOU: [91.11, 81.06, 93.15, 94.16, 42.39, 97.17, 75.24, 73.69, 48.84, 91.83, 76.08]
+mIOU: 78.61, mIOU_reduced: 78.61, accuracy: 95.15
+epoch: 40
+loss: 0.09067034262877244
+epoch: 41
+loss: 0.08733545052699554
+epoch: 42
+loss: 0.09022516375168776
+epoch: 43
+loss: 0.08655778070290883
+epoch: 44
+loss: 0.08643365173767774
+epoch: 45
+loss: 0.08614729640957637
+epoch: 46
+loss: 0.08455666231039242
+epoch: 47
+loss: 0.08400609726325059
+epoch: 48
+loss: 0.08668438880107342
+epoch: 49
+loss: 0.0841376869342266
+epoch: 50
+loss: 0.08598226862840164
+epoch: 51
+loss: 0.08226058135430019
+epoch: 52
+loss: 0.08294191736823474
+epoch: 53
+loss: 0.08502599425040759
+epoch: 54
+loss: 0.08323706772464973
+epoch: 55
+loss: 0.08311204039133512
+epoch: 56
+loss: 0.08124241060935534
+epoch: 57
+loss: 0.08321192239721616
+epoch: 58
+loss: 0.08304544079762238
+epoch: 59
+loss: 0.08251353429678158
+IOU: [91.15, 81.12, 93.23, 94.23, 56.54, 97.27, 75.86, 74.73, 49.58, 92.13, 77.15]
+mIOU: 80.27, mIOU_reduced: 80.27, accuracy: 95.24
+epoch: 60
+loss: 0.08274935510678169
+epoch: 61
+loss: 0.08137664867517276
+epoch: 62
+loss: 0.08038557005616334
+epoch: 63
+loss: 0.08100683776996075
+epoch: 64
+loss: 0.08114950750500728
+epoch: 65
+loss: 0.08213502942369534
+epoch: 66
+loss: 0.07815111466707328
+epoch: 67
+loss: 0.07984262036207394
+epoch: 68
+loss: 0.07937006270274138
+epoch: 69
+loss: 0.08056791527913167
+epoch: 70
+loss: 0.08047735031980735
+epoch: 71
+loss: 0.0795135351900871
+epoch: 72
+loss: 0.07854086705125295
+epoch: 73
+loss: 0.0802582904505424
+epoch: 74
+loss: 0.07809112450251213
+epoch: 75
+loss: 0.07842705465662174
+epoch: 76
+loss: 0.0797948426543138
+epoch: 77
+loss: 0.07978382162176646
+epoch: 78
+loss: 0.07940880916057488
+epoch: 79
+loss: 0.07701151264019501
+IOU: [91.4, 81.56, 93.27, 94.28, 58.18, 97.3, 76.13, 74.13, 49.45, 92.12, 77.52]
+mIOU: 80.49, mIOU_reduced: 80.49, accuracy: 95.32
+epoch: 80
+loss: 0.07618587855727245
+epoch: 81
+loss: 0.0768157256146272
+epoch: 82
+loss: 0.07680424130879916
+epoch: 83
+loss: 0.07712974150975545
+epoch: 84
+loss: 0.07707102300646977
+epoch: 85
+loss: 0.07593706431679237
+epoch: 86
+loss: 0.07739252215012526
+epoch: 87
+loss: 0.07757944604143119
+epoch: 88
+loss: 0.07515659498480651
+epoch: 89
+loss: 0.07780067288340667
+epoch: 90
+loss: 0.07790289016870353
+epoch: 91
+loss: 0.07562594507367183
+epoch: 92
+loss: 0.07639943349819917
+epoch: 93
+loss: 0.07571490710744491
+epoch: 94
+loss: 0.07515019264358741
+epoch: 95
+loss: 0.07545350339168157
+epoch: 96
+loss: 0.07313455736789948
+epoch: 97
+loss: 0.07370240098008743
+epoch: 98
+loss: 0.07595094455740391
+epoch: 99
+loss: 0.07582413118619186
+IOU: [91.44, 81.76, 93.3, 94.32, 58.83, 97.32, 76.28, 74.34, 50.11, 92.15, 77.46]
+mIOU: 80.66, mIOU_reduced: 80.66, accuracy: 95.35
+epoch: 100
+loss: 0.07633900900299732
+epoch: 101
+loss: 0.07433445952259578
+epoch: 102
+loss: 0.07351244221895169
+epoch: 103
+loss: 0.07470029573409985
+epoch: 104
+loss: 0.07393738875786464
+epoch: 105
+loss: 0.07590658867206329
+epoch: 106
+loss: 0.07425328267690463
+epoch: 107
+loss: 0.07584697122757252
+epoch: 108
+loss: 0.07449907073989892
+epoch: 109
+loss: 0.07480054816756493
+epoch: 110
+loss: 0.07349514665129857
+epoch: 111
+loss: 0.07322052579659682
+epoch: 112
+loss: 0.0715007178294353
+epoch: 113
+loss: 0.07227229384275582
+epoch: 114
+loss: 0.07432698181424385
+epoch: 115
+loss: 0.0747981584415986
+epoch: 116
+loss: 0.07475282662572005
+epoch: 117
+loss: 0.0750452985939307
+epoch: 118
+loss: 0.07162785931275441
+epoch: 119
+loss: 0.07211458549285546
+IOU: [91.33, 81.71, 93.29, 94.48, 58.86, 97.4, 76.41, 74.59, 50.04, 92.31, 77.39]
+mIOU: 80.71, mIOU_reduced: 80.71, accuracy: 95.35
+epoch: 120
+loss: 0.07250107958530769
+epoch: 121
+loss: 0.07396723568821564
+epoch: 122
+loss: 0.07317669794727595
+epoch: 123
+loss: 0.07190778851509094
+epoch: 124
+loss: 0.07371730548449051
+epoch: 125
+loss: 0.070526934778079
+epoch: 126
+loss: 0.07238273733319381
+epoch: 127
+loss: 0.0744165953917381
+epoch: 128
+loss: 0.07305085458434545
+epoch: 129
+loss: 0.07179610574474701
+epoch: 130
+loss: 0.0736512534129314
+epoch: 131
+loss: 0.07360208922853836
+epoch: 132
+loss: 0.07299331078926723
+epoch: 133
+loss: 0.07262200499192262
+epoch: 134
+loss: 0.07160016770164172
+epoch: 135
+loss: 0.0720179670323164
+epoch: 136
+loss: 0.07316308716932933
+epoch: 137
+loss: 0.07280430866357608
+epoch: 138
+loss: 0.07330889732409747
+epoch: 139
+loss: 0.07090196834924893
+IOU: [91.45, 81.74, 93.33, 94.48, 58.87, 97.4, 76.62, 74.65, 50.13, 92.33, 77.58]
+mIOU: 80.78, mIOU_reduced: 80.78, accuracy: 95.38
+epoch: 140
+loss: 0.07372236815400612
+epoch: 141
+loss: 0.07263046359786621
+epoch: 142
+loss: 0.07281201371015647
+epoch: 143
+loss: 0.0717958801258833
+epoch: 144
+loss: 0.07227882093343979
+epoch: 145
+loss: 0.070943590062551
+epoch: 146
+loss: 0.07194025642596759
+epoch: 147
+loss: 0.07089702632182683
+epoch: 148
+loss: 0.07238459797241749
+epoch: 149
+loss: 0.07066170565592937
+epoch: 150
+loss: 0.0714965402506865
+epoch: 151
+loss: 0.07214446652394074
+epoch: 152
+loss: 0.06981840462256701
+epoch: 153
+loss: 0.07295019122270438
+epoch: 154
+loss: 0.07043897838164599
+epoch: 155
+loss: 0.07206478180029453
+epoch: 156
+loss: 0.07081384288194852
+epoch: 157
+loss: 0.06997625243205291
+epoch: 158
+loss: 0.07022742115152188
+epoch: 159
+loss: 0.07071238316786595
+IOU: [91.5, 81.79, 93.31, 94.46, 58.94, 97.4, 76.89, 74.72, 49.94, 92.34, 77.76]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.4
+epoch: 160
+loss: 0.0716347390642533
+epoch: 161
+loss: 0.07181612268472329
+epoch: 162
+loss: 0.07110682550149086
+epoch: 163
+loss: 0.06987725819150607
+epoch: 164
+loss: 0.07070163073830116
+epoch: 165
+loss: 0.06956458129943946
+epoch: 166
+loss: 0.07027908347738095
+epoch: 167
+loss: 0.07025175656263645
+epoch: 168
+loss: 0.07084838052590688
+epoch: 169
+loss: 0.0712445960021936
+epoch: 170
+loss: 0.06920585743127725
+epoch: 171
+loss: 0.07126376357598183
+epoch: 172
+loss: 0.07095641996233891
+epoch: 173
+loss: 0.07074202033571708
+epoch: 174
+loss: 0.07107478781388356
+epoch: 175
+loss: 0.07004667789890216
+epoch: 176
+loss: 0.06991976977158816
+epoch: 177
+loss: 0.07076924389753586
+epoch: 178
+loss: 0.07124190108898358
+epoch: 179
+loss: 0.0704037053271746
+IOU: [91.43, 81.52, 93.28, 94.51, 58.98, 97.42, 76.81, 74.66, 50.09, 92.37, 77.82]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.37
+epoch: 180
+loss: 0.07043043199257973
+epoch: 181
+loss: 0.06951216035164319
+epoch: 182
+loss: 0.06936019152784959
+epoch: 183
+loss: 0.07076641496939537
+epoch: 184
+loss: 0.07144142620456524
+epoch: 185
+loss: 0.07223412356315514
+epoch: 186
+loss: 0.06993956605975445
+epoch: 187
+loss: 0.0703226618277721
+epoch: 188
+loss: 0.06999919315179189
+epoch: 189
+loss: 0.07123445671720383
+epoch: 190
+loss: 0.07261513861326072
+IOU: [91.41, 81.52, 93.25, 94.44, 59.02, 97.42, 76.63, 74.6, 50.12, 92.39, 77.74]
+mIOU: 80.78, mIOU_reduced: 80.78, accuracy: 95.36
+epoch: 191
+loss: 0.06952654150051948
+IOU: [91.49, 81.6, 93.25, 94.44, 59.07, 97.42, 76.58, 74.69, 50.04, 92.4, 77.77]
+mIOU: 80.8, mIOU_reduced: 80.8, accuracy: 95.38
+epoch: 192
+loss: 0.07051314318027252
+IOU: [91.43, 81.53, 93.27, 94.48, 59.05, 97.42, 76.71, 74.6, 50.12, 92.37, 77.86]
+mIOU: 80.8, mIOU_reduced: 80.8, accuracy: 95.37
+epoch: 193
+loss: 0.0699805597273203
+IOU: [91.43, 81.57, 93.29, 94.49, 58.9, 97.43, 76.86, 74.72, 49.93, 92.4, 77.94]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.37
+epoch: 194
+loss: 0.07037790339344586
+IOU: [91.45, 81.67, 93.28, 94.49, 58.99, 97.43, 76.62, 74.76, 50.01, 92.4, 77.82]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.39
+epoch: 195
+loss: 0.07054887836178143
+IOU: [91.53, 81.68, 93.26, 94.49, 59.03, 97.42, 76.72, 74.64, 50.06, 92.38, 77.75]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.39
+epoch: 196
+loss: 0.07142658980611043
+IOU: [91.42, 81.59, 93.27, 94.37, 59.04, 97.37, 76.67, 74.78, 50.41, 92.29, 77.69]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.36
+epoch: 197
+loss: 0.06893765849944873
+IOU: [91.5, 81.68, 93.28, 94.49, 59.08, 97.4, 76.78, 74.75, 50.14, 92.33, 77.79]
+mIOU: 80.84, mIOU_reduced: 80.84, accuracy: 95.39
+epoch: 198
+loss: 0.07040306218923667
+IOU: [91.42, 81.55, 93.28, 94.52, 58.9, 97.43, 76.77, 74.73, 50.22, 92.4, 77.95]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.37
+epoch: 199
+loss: 0.06965778949551094
+IOU: [91.44, 81.57, 93.26, 94.49, 58.96, 97.42, 76.61, 74.79, 50.2, 92.4, 77.75]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.37
+Best mIOU: 80.83710479736328
+Best global accuracy: 95.3997254371643
+Training time 1:32:32
+{'model_name': 'exp48_decoder26', 'model_type': 'experimental2', 'num_classes': 11, 'ignore_value': 255, 'pretrained_backbone': False, 'change_num_classes': True, 'epochs': 200, 'max_epochs': 200, 'resume': False, 'lr': 0.005, 'momentum': 0.9, 'weight_decay': 0.0001, 'class_weight': None, 'bn_weight_decay': False, 'bn_precise_stats': False, 'bn_precise_num_samples': 600, 'lr_scheduler': 'poly', 'poly_power': 0.9, 'warmup_iters': 1000, 'warmup_factor': 0.1, 'mixed_precision': True, 'runs': 1, 'run': 5, 'RNG_seed': 5, 'loss_type': 'cross_entropy', 'eval_while_train': True, 'exclude_classes': [], 'warmup_iter': 3, 'num_iter': 30, 'benchmark_loader': True, 'benchmark_model': True, 'dataset_name': 'camvid', 'dataset_dir': 'CamVid3', 'batch_size': 12, 'train_min_size': 288, 'train_max_size': 1152, 'train_crop_size': [720, 960], 'val_input_size': 720, 'val_label_size': 720, 'aug_mode': 'baseline', 'resize_mode': 'uniform', 'edge_aware_crop': False, 'boost_rare_classes': False, 'num_workers': 6, 'class_uniform_pct': 0, 'train_split': 'trainval', 'val_split': 'test', 'max_eval': 10000, 'validate_train_loader': False, 'eval_print_every': 1000, 'train_print_every': 400, 'pretrained_path': 'checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1', 'save_every_k_epochs': 20, 'save_last_k_epochs': 10, 'save_dir': 'checkpoints', 'log_dir': 'training_log', 'save_name': 'camvid_exp48_decoder26_200_epochs_288_1152_resize', 'save_best_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_run5', 'save_latest_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'resume_path': 'checkpoints/camvid_exp48_decoder26_200_epochs_288_1152_resize_latest', 'log_path': 'training_log/camvid_exp48_decoder26_200_epochs_288_1152_resize_log.txt'}
+run: 5
+epoch: 0
+loss: 1.950678452467307
+IOU: [82.07, 61.84, 65.51, 31.67, 0.0, 71.1, 2.64, 0.05, 0.06, 4.89, 0.0]
+mIOU: 29.08, mIOU_reduced: 29.08, accuracy: 76.67
+epoch: 1
+loss: 0.8821243017147748
+epoch: 2
+loss: 0.5355792290125138
+epoch: 3
+loss: 0.39109793534645665
+epoch: 4
+loss: 0.32818477161419696
+epoch: 5
+loss: 0.2860513348609973
+epoch: 6
+loss: 0.26156270389373487
+epoch: 7
+loss: 0.2398803589435724
+epoch: 8
+loss: 0.22117298306562963
+epoch: 9
+loss: 0.19019264517686305
+epoch: 10
+loss: 0.1784134797560863
+epoch: 11
+loss: 0.16471072955009264
+epoch: 12
+loss: 0.1574004128193244
+epoch: 13
+loss: 0.144034349383452
+epoch: 14
+loss: 0.13955608889078483
+epoch: 15
+loss: 0.1326390036787742
+epoch: 16
+loss: 0.1281372566635792
+epoch: 17
+loss: 0.12346966163470195
+epoch: 18
+loss: 0.12141518600476094
+epoch: 19
+loss: 0.11335622939543846
+IOU: [90.79, 80.29, 92.59, 93.7, 0.0, 96.79, 71.33, 73.52, 43.78, 91.07, 71.16]
+mIOU: 73.19, mIOU_reduced: 73.19, accuracy: 94.75
+epoch: 20
+loss: 0.11452798392528142
+epoch: 21
+loss: 0.11124118398397397
+epoch: 22
+loss: 0.11310980316155995
+epoch: 23
+loss: 0.10517149437696506
+epoch: 24
+loss: 0.10640222884905644
+epoch: 25
+loss: 0.10783422948458256
+epoch: 26
+loss: 0.10285669068495433
+epoch: 27
+loss: 0.10050761107450877
+epoch: 28
+loss: 0.09807531612041669
+epoch: 29
+loss: 0.09953161615591782
+epoch: 30
+loss: 0.09753139450764045
+epoch: 31
+loss: 0.09704411029815674
+epoch: 32
+loss: 0.09469077220329872
+epoch: 33
+loss: 0.09483195994144832
+epoch: 34
+loss: 0.09377213376454818
+epoch: 35
+loss: 0.09427591489675717
+epoch: 36
+loss: 0.09337197492520015
+epoch: 37
+loss: 0.09365429079685456
+epoch: 38
+loss: 0.09181818671715565
+epoch: 39
+loss: 0.08957156424339001
+IOU: [91.07, 80.9, 93.1, 94.12, 5.03, 97.12, 73.97, 74.93, 47.21, 91.79, 74.13]
+mIOU: 74.85, mIOU_reduced: 74.85, accuracy: 95.04
+epoch: 40
+loss: 0.09120624722578587
+epoch: 41
+loss: 0.08791418851186068
+epoch: 42
+loss: 0.09065450040193704
+epoch: 43
+loss: 0.08708801292456113
+epoch: 44
+loss: 0.0867807897619712
+epoch: 45
+loss: 0.08639426328814946
+epoch: 46
+loss: 0.08512886823751988
+epoch: 47
+loss: 0.0844510012330153
+epoch: 48
+loss: 0.0870307091719065
+epoch: 49
+loss: 0.08464391395831719
+epoch: 50
+loss: 0.0864789333098974
+epoch: 51
+loss: 0.08264993742490426
+epoch: 52
+loss: 0.08337408867784035
+epoch: 53
+loss: 0.08517898800663459
+epoch: 54
+loss: 0.0835296247058954
+epoch: 55
+loss: 0.083520997602206
+epoch: 56
+loss: 0.08167699514291225
+epoch: 57
+loss: 0.08328333458839318
+epoch: 58
+loss: 0.08326515058676402
+epoch: 59
+loss: 0.08273994540556884
+IOU: [91.14, 81.15, 93.2, 94.3, 52.02, 97.23, 75.04, 75.99, 49.46, 92.06, 75.8]
+mIOU: 79.76, mIOU_reduced: 79.76, accuracy: 95.22
+epoch: 60
+loss: 0.08303877099966392
+epoch: 61
+loss: 0.08165591563551854
+epoch: 62
+loss: 0.08063432545616077
+epoch: 63
+loss: 0.08112224382467759
+epoch: 64
+loss: 0.0813140268318164
+epoch: 65
+loss: 0.08219775930047035
+epoch: 66
+loss: 0.07837544773251583
+epoch: 67
+loss: 0.08019442330950345
+epoch: 68
+loss: 0.07949483299102539
+epoch: 69
+loss: 0.08075568041740319
+epoch: 70
+loss: 0.08092492188398655
+epoch: 71
+loss: 0.07994759464875245
+epoch: 72
+loss: 0.07903130820546395
+epoch: 73
+loss: 0.08046002982136531
+epoch: 74
+loss: 0.0783346519829371
+epoch: 75
+loss: 0.07855944345012689
+epoch: 76
+loss: 0.07989865847122975
+epoch: 77
+loss: 0.08018446255188721
+epoch: 78
+loss: 0.07956254224364574
+epoch: 79
+loss: 0.07735962917407353
+IOU: [91.42, 81.64, 93.24, 94.26, 57.57, 97.25, 75.47, 75.25, 49.6, 92.07, 76.58]
+mIOU: 80.39, mIOU_reduced: 80.39, accuracy: 95.32
+epoch: 80
+loss: 0.07644934818530694
+epoch: 81
+loss: 0.07676342731485
+epoch: 82
+loss: 0.07690222675983723
+epoch: 83
+loss: 0.07725209847856791
+epoch: 84
+loss: 0.07717254289831871
+epoch: 85
+loss: 0.0760215009825352
+epoch: 86
+loss: 0.07750057916228588
+epoch: 87
+loss: 0.07783775633344284
+epoch: 88
+loss: 0.0753672756254673
+epoch: 89
+loss: 0.07786410502516307
+epoch: 90
+loss: 0.07796547380395424
+epoch: 91
+loss: 0.07570165319320483
+epoch: 92
+loss: 0.0762952620593401
+epoch: 93
+loss: 0.07583047497348908
+epoch: 94
+loss: 0.07537709100124164
+epoch: 95
+loss: 0.0758306771898881
+epoch: 96
+loss: 0.07313903554891929
+epoch: 97
+loss: 0.07382673321244045
+epoch: 98
+loss: 0.07629936140699264
+epoch: 99
+loss: 0.0759958637257417
+IOU: [91.44, 81.85, 93.3, 94.24, 58.08, 97.27, 75.61, 75.13, 50.04, 92.11, 76.56]
+mIOU: 80.51, mIOU_reduced: 80.51, accuracy: 95.35
+epoch: 100
+loss: 0.07641773441663155
+epoch: 101
+loss: 0.07450560528116348
+epoch: 102
+loss: 0.0737549449579838
+epoch: 103
+loss: 0.07508053086124934
+epoch: 104
+loss: 0.07425877910393935
+epoch: 105
+loss: 0.07622150990825433
+epoch: 106
+loss: 0.07453477993989602
+epoch: 107
+loss: 0.0760949197678994
+epoch: 108
+loss: 0.07476857247260901
+epoch: 109
+loss: 0.07513041822956158
+epoch: 110
+loss: 0.07376832066056056
+epoch: 111
+loss: 0.07355730063640155
+epoch: 112
+loss: 0.07162025064612046
+epoch: 113
+loss: 0.07241459763967074
+epoch: 114
+loss: 0.0745062676186745
+epoch: 115
+loss: 0.07485986195313625
+epoch: 116
+loss: 0.0750126254100066
+epoch: 117
+loss: 0.07530730351423606
+epoch: 118
+loss: 0.07191957332766973
+epoch: 119
+loss: 0.07234497282367486
+IOU: [91.36, 81.83, 93.3, 94.48, 58.92, 97.35, 76.11, 75.63, 50.06, 92.28, 77.2]
+mIOU: 80.78, mIOU_reduced: 80.78, accuracy: 95.36
+epoch: 120
+loss: 0.07258351834920737
+epoch: 121
+loss: 0.07418203649994655
+epoch: 122
+loss: 0.07312071275634643
+epoch: 123
+loss: 0.07211714801497948
+epoch: 124
+loss: 0.07386096213490535
+epoch: 125
+loss: 0.07068725283711384
+epoch: 126
+loss: 0.07255646529105994
+epoch: 127
+loss: 0.07472816682778873
+epoch: 128
+loss: 0.07307518665225078
+epoch: 129
+loss: 0.07194026655111557
+epoch: 130
+loss: 0.07392942867217919
+epoch: 131
+loss: 0.07370936259245262
+epoch: 132
+loss: 0.07329439954497875
+epoch: 133
+loss: 0.07283593895725715
+epoch: 134
+loss: 0.07165902642867504
+epoch: 135
+loss: 0.07219417651112263
+epoch: 136
+loss: 0.07328306329556
+epoch: 137
+loss: 0.07274745796353389
+epoch: 138
+loss: 0.0735340786094849
+epoch: 139
+loss: 0.07106810397444627
+IOU: [91.51, 81.86, 93.33, 94.45, 58.64, 97.36, 76.11, 76.05, 49.99, 92.33, 76.53]
+mIOU: 80.74, mIOU_reduced: 80.74, accuracy: 95.4
+epoch: 140
+loss: 0.07370324881795125
+epoch: 141
+loss: 0.07260373454445447
+epoch: 142
+loss: 0.07286402946099257
+epoch: 143
+loss: 0.07195581906499007
+epoch: 144
+loss: 0.07245761490403077
+epoch: 145
+loss: 0.07096073814691642
+epoch: 146
+loss: 0.0721548807162505
+epoch: 147
+loss: 0.07104152861313942
+epoch: 148
+loss: 0.07258704715432265
+epoch: 149
+loss: 0.07079907888785386
+epoch: 150
+loss: 0.07138261495110317
+epoch: 151
+loss: 0.0721804257004689
+epoch: 152
+loss: 0.06992445857479022
+epoch: 153
+loss: 0.07301430251353826
+epoch: 154
+loss: 0.07064476523261803
+epoch: 155
+loss: 0.07211569543832387
+epoch: 156
+loss: 0.07086974048079589
+epoch: 157
+loss: 0.07025898668246391
+epoch: 158
+loss: 0.0703772858549387
+epoch: 159
+loss: 0.07078729569911957
+IOU: [91.52, 81.86, 93.32, 94.44, 58.79, 97.37, 76.47, 75.79, 49.79, 92.35, 77.15]
+mIOU: 80.8, mIOU_reduced: 80.8, accuracy: 95.41
+epoch: 160
+loss: 0.07186304644132271
+epoch: 161
+loss: 0.07161932553236301
+epoch: 162
+loss: 0.07114905271774684
+epoch: 163
+loss: 0.07012159864489849
+epoch: 164
+loss: 0.07075815456799972
+epoch: 165
+loss: 0.06963217210693237
+epoch: 166
+loss: 0.07035694128045669
+epoch: 167
+loss: 0.07050899186959633
+epoch: 168
+loss: 0.07108062687210548
+epoch: 169
+loss: 0.07156614319254191
+epoch: 170
+loss: 0.06940082823618865
+epoch: 171
+loss: 0.0715180078569131
+epoch: 172
+loss: 0.07098931389359328
+epoch: 173
+loss: 0.07098715083721356
+epoch: 174
+loss: 0.07102264616733943
+epoch: 175
+loss: 0.07004875087967286
+epoch: 176
+loss: 0.07008046437150393
+epoch: 177
+loss: 0.07094008981799468
+epoch: 178
+loss: 0.07136207799880932
+epoch: 179
+loss: 0.07049686117814137
+IOU: [91.52, 81.6, 93.26, 94.51, 59.1, 97.39, 76.45, 75.96, 49.92, 92.38, 77.26]
+mIOU: 80.85, mIOU_reduced: 80.85, accuracy: 95.39
+epoch: 180
+loss: 0.07051844570117119
+epoch: 181
+loss: 0.06967166935404141
+epoch: 182
+loss: 0.0696174514790376
+epoch: 183
+loss: 0.0710754017226207
+epoch: 184
+loss: 0.07161315950827721
+epoch: 185
+loss: 0.07246216329244468
+epoch: 186
+loss: 0.07025128612533593
+epoch: 187
+loss: 0.07051267589514072
+epoch: 188
+loss: 0.07011844857763021
+epoch: 189
+loss: 0.07135816539327304
+epoch: 190
+loss: 0.0726620071591475
+IOU: [91.48, 81.65, 93.26, 94.44, 59.21, 97.38, 76.29, 75.74, 50.23, 92.4, 77.14]
+mIOU: 80.84, mIOU_reduced: 80.84, accuracy: 95.39
+epoch: 191
+loss: 0.06963308776418368
+IOU: [91.56, 81.71, 93.25, 94.43, 59.33, 97.39, 76.31, 75.84, 49.96, 92.41, 77.21]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.41
+epoch: 192
+loss: 0.07070287288381503
+IOU: [91.49, 81.61, 93.26, 94.47, 59.02, 97.38, 76.34, 75.73, 50.07, 92.4, 77.17]
+mIOU: 80.81, mIOU_reduced: 80.81, accuracy: 95.39
+epoch: 193
+loss: 0.07013183325911179
+IOU: [91.51, 81.69, 93.29, 94.48, 58.85, 97.39, 76.44, 75.97, 49.68, 92.42, 77.28]
+mIOU: 80.82, mIOU_reduced: 80.82, accuracy: 95.4
+epoch: 194
+loss: 0.07052834561237922
+IOU: [91.5, 81.77, 93.28, 94.47, 59.08, 97.4, 76.28, 75.82, 50.02, 92.43, 77.12]
+mIOU: 80.83, mIOU_reduced: 80.83, accuracy: 95.41
+epoch: 195
+loss: 0.07062935017240353
+IOU: [91.6, 81.83, 93.28, 94.48, 59.15, 97.38, 76.28, 75.91, 50.02, 92.39, 77.05]
+mIOU: 80.85, mIOU_reduced: 80.85, accuracy: 95.42
+epoch: 196
+loss: 0.0714819552615667
+IOU: [91.48, 81.68, 93.28, 94.38, 59.22, 97.33, 76.31, 75.97, 50.4, 92.28, 77.11]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.37
+epoch: 197
+loss: 0.06913652805945812
+IOU: [91.56, 81.76, 93.27, 94.5, 59.16, 97.37, 76.37, 75.82, 50.22, 92.34, 77.14]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.41
+epoch: 198
+loss: 0.07043517132600148
+IOU: [91.48, 81.64, 93.28, 94.51, 59.03, 97.39, 76.39, 75.94, 50.13, 92.41, 77.31]
+mIOU: 80.87, mIOU_reduced: 80.87, accuracy: 95.39
+epoch: 199
+loss: 0.06984887644648552
+IOU: [91.5, 81.66, 93.27, 94.48, 59.09, 97.39, 76.33, 76.01, 50.13, 92.42, 77.22]
+mIOU: 80.86, mIOU_reduced: 80.86, accuracy: 95.4
+Best mIOU: 80.86533043601297
+Best global accuracy: 95.42084336280823
+Training time 1:32:36
+mIOUs: [80.9288031838157, 81.02897435968572, 80.83710479736328, 80.86533043601297]
+global_accuracies: [95.3961730003357, 95.4094409942627, 95.3997254371643, 95.42084336280823]

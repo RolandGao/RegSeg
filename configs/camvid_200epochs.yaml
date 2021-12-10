@@ -1,0 +1,68 @@
+#MODEL:
+model_name: exp49_decoder14
+model_type: experimental2
+num_classes: 11
+ignore_value: 255
+pretrained_backbone: False
+change_num_classes: True
+
+#OPTIM:
+epochs: 200
+max_epochs: 200
+resume: False
+lr: 0.005
+momentum: 0.9
+weight_decay: 0.0001
+class_weight: null
+bn_weight_decay: False
+bn_precise_stats: False
+bn_precise_num_samples: 600
+lr_scheduler: poly
+poly_power: 0.9
+warmup_iters: 1000
+warmup_factor: 0.1
+
+#TRAIN:
+mixed_precision: True
+runs: 1
+run: 1
+RNG_seed: 0
+loss_type: cross_entropy
+eval_while_train: True
+exclude_classes: []
+
+#benchmark
+warmup_iter: 3
+num_iter: 30
+benchmark_loader: True
+benchmark_model: True
+
+#dataset
+dataset_name: camvid
+dataset_dir: CamVid3
+batch_size: 12
+train_min_size: 288
+train_max_size: 1152
+train_crop_size: [720,960]
+val_input_size: 720
+val_label_size: 720
+aug_mode: baseline
+resize_mode: uniform
+edge_aware_crop: False
+boost_rare_classes: False
+num_workers: 4
+class_uniform_pct: 0
+train_split: trainval
+val_split: test
+max_eval: 10000
+validate_train_loader: False
+eval_print_every: 1000
+train_print_every: 400
+
+#checkpoint
+pretrained_path: checkpoints/cityscapes_exp49_decoder14_trainval_1000_epochs_run1
+save_every_k_epochs: 20
+save_last_k_epochs: 10
+save_dir: checkpoints
+log_dir: training_log
+save_name: camvid_exp49_decoder14_200_epochs

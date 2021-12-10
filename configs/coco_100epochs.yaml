@@ -1,0 +1,66 @@
+#MODEL:
+model_name: exp48_decoder26
+model_type: experimental2
+num_classes: 81
+ignore_value: 255
+pretrained_backbone: False
+
+#OPTIM:
+epochs: 100
+max_epochs: 100
+resume: False
+lr: 0.05
+momentum: 0.9
+weight_decay: 0.0001
+class_weight: null
+bn_weight_decay: False
+bn_precise_stats: False
+bn_precise_num_samples: 600
+lr_scheduler: poly
+warmup_iters: 1000
+warmup_factor: 0.01
+
+#TRAIN:
+mixed_precision: True
+runs: 1
+run: 1
+RNG_seed: 0
+loss_type: cross_entropy
+eval_while_train: True
+exclude_classes: []
+
+#benchmark
+warmup_iter: 10
+num_iter: 100
+benchmark_loader: True
+benchmark_model: True
+
+#dataset
+dataset_name: coco
+dataset_dir: coco
+batch_size: 16
+train_min_size: 256
+train_max_size: 1024
+train_crop_size: [512,512]
+val_input_size: 512
+val_label_size: 512
+aug_mode: baseline
+resize_mode: uniform
+edge_aware_crop: False
+boost_rare_classes: False
+num_workers: 4
+class_uniform_pct: 0
+train_split: train
+val_split: val
+max_eval: 10000
+validate_train_loader: False
+eval_print_every: 1000
+train_print_every: 400
+
+#checkpoint
+pretrained_path: ''
+save_every_k_epochs: 10
+save_last_k_epochs: 10
+save_dir: checkpoints
+log_dir: training_log
+save_name: coco_exp48_decoder26_100_epochs

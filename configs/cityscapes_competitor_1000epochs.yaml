@@ -1,0 +1,67 @@
+#MODEL:
+model_name: ddrnet23
+model_type: competitor
+num_classes: 19
+ignore_value: 255
+pretrained_backbone: False
+
+#OPTIM:
+epochs: 1000
+max_epochs: 1000
+resume: False
+lr: 0.05
+momentum: 0.9
+weight_decay: 0.0001
+class_weight: null
+bn_weight_decay: False
+bn_precise_stats: False
+bn_precise_num_samples: 600
+lr_scheduler: poly
+poly_power: 0.9
+warmup_iters: 3000
+warmup_factor: 0.1
+
+#TRAIN:
+mixed_precision: True
+runs: 1
+run: 1
+RNG_seed: 0
+loss_type: cross_entropy
+eval_while_train: True
+exclude_classes: [16]
+
+#benchmark
+warmup_iter: 10
+num_iter: 100
+benchmark_loader: True
+benchmark_model: True
+
+#dataset
+dataset_name: cityscapes
+dataset_dir: cityscapes_dataset
+batch_size: 8
+train_min_size: 400
+train_max_size: 1600
+train_crop_size: [768,768]
+val_input_size: 1024
+val_label_size: 1024
+aug_mode: randaug_reduced
+resize_mode: uniform
+edge_aware_crop: False
+boost_rare_classes: False
+num_workers: 6
+class_uniform_pct: 0.5
+train_split: train
+val_split: val
+max_eval: 600
+validate_train_loader: False
+eval_print_every: 10000
+train_print_every: 10000
+
+#checkpoint
+pretrained_path: ''
+save_every_k_epochs: 25
+save_last_k_epochs: 20
+save_dir: checkpoints
+log_dir: training_log
+save_name: cityscapes_ddrnet23_1000_epochs
