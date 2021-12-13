@@ -105,16 +105,15 @@ def get_config_and_check_files(config_filename):
     return check_config_files(config)
 def check_config_files(config):
     save_dir=config["save_dir"]
+    log_dir=config["log_dir"]
     config["save_best_path"]=os.path.join(save_dir,config["save_name"]+f"_run{config['run']}")
     config["save_latest_path"]=os.path.join(save_dir,config["save_name"]+"_latest")
     config["resume_path"]=config["save_latest_path"]
     config["log_path"]=os.path.join(config["log_dir"],config["save_name"]+"_log.txt")
-    if not os.path.isdir(save_dir):
-        raise FileNotFoundError(f"{save_dir} is not a directory")
+    os.makedirs(save_dir, exist_ok=True)
+    os.makedirs(log_dir, exist_ok=True)
     if not os.path.isdir(config["dataset_dir"]):
         raise FileNotFoundError(f"{config['dataset_dir']} is not a directory")
-    if not os.path.isdir(config["log_dir"]):
-        raise FileNotFoundError(f"{config['log_dir']} is not a directory")
     if config["resume"]:
         if not os.path.isfile(config["resume_path"]):
             config["resume_path"]=config["save_best_path"]
@@ -150,23 +149,12 @@ def setup_env(config):
     torch.manual_seed(seed)
     random.seed(seed)
     np.random.seed(seed) # might remove dependency on np later
-def train_main(config_filename):
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
-    run=1
-    if config["runs"]>1:
-        if config["resume"]:
-            dic=torch.load(config["resume_path"],map_location='cpu')
-            run=dic["run"]
-    configs=get_k_runs(config,config["runs"]-run+1)
-    mIOUs,global_accuracies=train_multiple(configs)
-    return mIOUs,global_accuracies
 def train_multiple(configs):
     global_accuracies=[]
     mIOUs=[]
     new_configs=[]
     for config in configs:
-        new_configs.append(check_config_files(config))
+        new_configs.append(config)
     for config in new_configs:
         best_mIU,best_global_accuracy=train_one(config)
         mIOUs.append(best_mIU)
@@ -176,16 +164,8 @@ def train_multiple(configs):
         f.write(f"mIOUs: {mIOUs}\n")
         f.write(f"global_accuracies: {global_accuracies}\n")
     return mIOUs,global_accuracies
-def get_k_runs(config,k):
-    configs=[]
-    for i in range(k):
-        new_config=copy.deepcopy(config)
-        new_config["run"]=i+1
-        if i!=0:
-            new_config["resume"]=False
-        configs.append(new_config)
-    return configs
 def train_one(config):
+    config=check_config_files(config)
     setup_env(config)
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     save_best_path=config["save_best_path"]
@@ -284,11 +264,6 @@ def train_one(config):
     print(f"Training time {total_time_str}")
     return best_mIU,best_global_accuracy
 
-def validate_main(config_filename):
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
-    confmat=validate_one(config)
-    return confmat
 def validate_multiple(configs):
     confmats=[]
     for config in configs:
@@ -354,10 +329,6 @@ def save_cityscapes_results(config,pred_dir):
 def benchmark_multiple(configs):
     for config in configs:
         benchmark_one(config)
-def benchmark_main(config_filename):
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
-    benchmark_one(config)
 def benchmark_one(config):
     setup_env(config)
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -384,11 +355,54 @@ def benchmark_one(config):
         print("train loader time:",train_loader_time)
         print("val loader time:",val_loader_time)
 
-if __name__=='__main__':
+def benchmark_main():
+    config_filename="configs/cityscapes_1000epochs.yaml"
+    with open(config_filename) as file:
+        config=yaml.full_load(file)
+    config["dataset_dir"]="cityscapes_dataset"
+    config["class_uniform_pct"]=0
+    config["benchmark_model"]=True
+    config["benchmark_loader"]=True
+    benchmark_one(config)
+
+def validate_main():
+    config_filename="configs/cityscapes_1000epochs.yaml"
+    with open(config_filename) as file:
+        config=yaml.full_load(file)
+    config["dataset_dir"]="cityscapes_dataset"
+    config["class_uniform_pct"]=0 # since we're only evalutaing, not training
+    config["pretrained_path"]="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
+    confmat=validate_one(config)
+    return confmat
+def train_main():
     config_filename= "configs/cityscapes_1000epochs.yaml"
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    config["dataset_dir"]="cityscapes_dataset" # If you put the dataset at another place, change this
-    config["pretrained_path"]="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
-    config["class_uniform_pct"]=0 # since we're only evalutaing, not training
-    validate_one(config)
+    config["dataset_dir"]="cityscapes_dataset"
+    train_one(config)
+def train_3runs():
+    # train the same model 3 times to get error bounds
+    config_filename="configs/cityscapes_1000epochs.yaml"
+    with open(config_filename) as file:
+        config=yaml.full_load(file)
+    configs=[]
+    for run in range(1,4):
+        new_config = copy.deepcopy(config)
+        new_config["run"] = run
+        new_config["RNG_seed"] = run
+        configs.append(new_config)
+    train_multiple(configs)
+def save_results_main():
+    config_filename= "configs/cityscapes_trainval_1000epochs.yaml"
+    with open(config_filename) as file:
+        config=yaml.full_load(file)
+    config["model_name"]="exp53_decoder29"
+    config["val_split"]="test"
+    config["pretrained_path"]="checkpoints/cityscapes_exp53_decoder29_trainval_1000_epochs_1024_crop_bootstrapped_run1"
+    pred_dir="test_submission_dir"
+    save_cityscapes_results(config,pred_dir)
+
+if __name__=='__main__':
+    benchmark_main()
+    validate_main()
+    train_main()

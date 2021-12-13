@@ -17,12 +17,12 @@ bn_weight_decay: False
 bn_precise_stats: False
 bn_precise_num_samples: 600
 lr_scheduler: poly
+poly_power: 0.9
 warmup_iters: 1000
 warmup_factor: 0.01
 
 #TRAIN:
 mixed_precision: True
-runs: 1
 run: 1
 RNG_seed: 0
 loss_type: cross_entropy
@@ -45,9 +45,6 @@ train_crop_size: [512,512]
 val_input_size: 512
 val_label_size: 512
 aug_mode: baseline
-resize_mode: uniform
-edge_aware_crop: False
-boost_rare_classes: False
 num_workers: 4
 class_uniform_pct: 0
 train_split: train

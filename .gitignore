@@ -1,4 +1,11 @@
 venv
+__pycache__
 checkpoints
 converted_checkpoints
 convert_model.py
+
+mapillary_dataset
+cityscapes_dataset
+pascal_voc_dataset
+coco
+CamVid

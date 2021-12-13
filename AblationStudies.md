@@ -22,9 +22,9 @@ There are a few notes about the results:
 
 5. For each .txt training file, there is a line at the beginning that shows the exact config used to train the model.
    
-Below, we show the names of our backbones (body_name) and our decoders (decoder_name) in model.py.
+Below, we match the descriptions in our paper to the names of our backbones (body_name) and our decoders (decoder_name) in model.py.
 
-Row | body_name | dilated rates | field-of-view | mIOU^R
+Row | body_name | dilation rates | field-of-view | mIOU^R
 --- | --- | --- | --- | ---
 1 | exp48 | (1,1)+(1,2)+4*(1,4)+7*(1,14) | 3807 | 75.85
 2 | exp43 | (1,1)+(1,2)+(1,4)+(1,6)+(1,8)+(1,10)+7*(1,12) | 3743 | 75.75

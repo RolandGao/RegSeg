@@ -77,7 +77,7 @@ def z(log_dir):
         all_ious=extract_ious_runs(filename)
         for i,ious in enumerate(all_ious):
             best_miou=calc_miou(ious)
-            name=filename.split("/")[-1]+f"_run{i}"
+            name=filename.split("/")[-1]+f"_run{i+1}"
             dic[name]=best_miou
     print("miou original")
     print_dict(dic)

@@ -23,12 +23,11 @@ warmup_factor: 0.1
 
 #TRAIN:
 mixed_precision: True
-runs: 1
 run: 1
 RNG_seed: 0
 loss_type: cross_entropy
 eval_while_train: True
-exclude_classes: [16]
+exclude_classes: [14,15,16]
 
 #benchmark
 warmup_iter: 10
@@ -46,9 +45,6 @@ train_crop_size: [768,768]
 val_input_size: 1024
 val_label_size: 1024
 aug_mode: randaug_reduced
-resize_mode: uniform
-edge_aware_crop: False
-boost_rare_classes: False
 num_workers: 6
 class_uniform_pct: 0.5
 train_split: train

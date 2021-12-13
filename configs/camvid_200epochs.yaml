@@ -1,5 +1,5 @@
 #MODEL:
-model_name: exp49_decoder14
+model_name: exp48_decoder26
 model_type: experimental2
 num_classes: 11
 ignore_value: 255
@@ -24,7 +24,6 @@ warmup_factor: 0.1
 
 #TRAIN:
 mixed_precision: True
-runs: 1
 run: 1
 RNG_seed: 0
 loss_type: cross_entropy
@@ -47,10 +46,7 @@ train_crop_size: [720,960]
 val_input_size: 720
 val_label_size: 720
 aug_mode: baseline
-resize_mode: uniform
-edge_aware_crop: False
-boost_rare_classes: False
-num_workers: 4
+num_workers: 6
 class_uniform_pct: 0
 train_split: trainval
 val_split: test
@@ -60,9 +56,9 @@ eval_print_every: 1000
 train_print_every: 400
 
 #checkpoint
-pretrained_path: checkpoints/cityscapes_exp49_decoder14_trainval_1000_epochs_run1
+pretrained_path: checkpoints/cityscapes_exp48_decoder26_trainval_1000_epochs_1024_crop_bootstrapped_run1
 save_every_k_epochs: 20
 save_last_k_epochs: 10
 save_dir: checkpoints
 log_dir: training_log
-save_name: camvid_exp49_decoder14_200_epochs
+save_name: camvid_exp48_decoder26_200_epochs_288_1152_resize
