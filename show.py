@@ -4,7 +4,7 @@ from PIL import Image
 import torch
 import time
 from data import get_cityscapes,get_pascal_voc, build_val_transform
-from datasets.cityscapes import Cityscapes2
+from datasets.cityscapes import Cityscapes
 from model import RegSeg
 from train import get_dataset_loaders
 import yaml
@@ -23,14 +23,14 @@ def get_colors():
 def get_colors_cityscapes():
     colors=np.zeros((256,3))
     colors[255]=[255,255,255]
-    for c in Cityscapes2.classes:
+    for c in Cityscapes.classes:
         if 0<=c.train_id<=18:
             colors[c.train_id]=c.color
     return colors.astype("uint8")
 def get_colors_cityscapes_labelid():
     colors=np.zeros((256,3))
     colors[255]=[255,255,255]
-    for c in Cityscapes2.classes:
+    for c in Cityscapes.classes:
         colors[c.id]=c.color
     return colors.astype("uint8")
 def get_colors_mapillary():
@@ -313,7 +313,7 @@ def show_cityscapes_model():
     model=RegSeg(
         name="exp48_decoder26",
         num_classes=19,
-        pretrained="converted_checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
+        pretrained="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
     )
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     num_images=4
@@ -323,11 +323,12 @@ def show_cityscapes_model():
     with open(config_filename) as file:
         config=yaml.full_load(file)
     config["num_workers"]=0
-    config["class_uniform_pct"]=0.5
     config["batch_size"]=1
+    config["class_uniform_pct"]=0
     config["train_crop_size"]=[1024,1024*2]
     config["train_max_size"]=1024
     config["train_min_size"]=1024
+    config["dataset_dir"]="cityscapes_dataset"
     seed=0
     torch.manual_seed(seed)
     random.seed(seed)
@@ -335,11 +336,9 @@ def show_cityscapes_model():
     train_loader,val_loader,train_set=get_dataset_loaders(config)
     show(model,val_loader,device,show_cityscapes_mask,num_images=num_images,skip=skip,images_per_line=images_per_line)
 def show_cityscapes_failure_modes():
-
-    import random
     num_images=4
     images_per_line=1
-    skip=12
+    skip=0
     model=RegSeg(
         name="exp48_decoder26",
         num_classes=19,
@@ -348,9 +347,10 @@ def show_cityscapes_failure_modes():
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
     val_transform=build_val_transform(1024,1024)
-    indices=[312, 84, 161, 228, 54, 319, 313, 310, 230, 317, 262, 276, 318, 66, 301, 296, 321, 360, 140, 257, 290, 101, 83, 178, 263, 278, 121, 147, 26, 125]
-    val = Cityscapes2("cityscapes_dataset", split="val", target_type="semantic",
-                      transforms=val_transform,class_uniform_pct=0)
+    indices=[312, 84, 54, 161, 230, 319, 303, 297, 262, 310, 263, 318, 360, 11, 321, 290, 257, 283, 121, 101, 276, 100, 317, 124, 175, 267, 278, 178, 231, 228]
+    # indices=[312, 84, 161, 228, 54, 319, 313, 310, 230, 317, 262, 276, 318, 66, 301, 296, 321, 360, 140, 257, 290, 101, 83, 178, 263, 278, 121, 147, 26, 125]
+    val = Cityscapes("cityscapes_dataset", split="val", target_type="semantic",
+                     transforms=val_transform, class_uniform_pct=0)
     val=torch.utils.data.Subset(val,indices)
     val_loader = get_dataloader_val(val, 0)
     show(model,val_loader,device,show_cityscapes_mask,num_images=num_images,skip=skip,images_per_line=images_per_line)

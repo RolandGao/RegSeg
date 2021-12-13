@@ -50,7 +50,7 @@ To see the ablation studies results from the paper, go [here](AblationStudies.md
 ### Usage
 To visualize your model, go to show.py.
 
-To see our model definitions and do some speed tests, go to model.py.
+To see the model definitions and do some speed tests, go to model.py.
 
 To train, validate, benchmark, and save the results of your model, go to train.py.
 

@@ -23,7 +23,7 @@ def find_cityscapes_filenames(images_dir,targets_dir,split,target_suffix):
             all_imgs.append((image_filename,target_filename))
     return all_imgs
 
-class Cityscapes2(data.Dataset):
+class Cityscapes(data.Dataset):
     CityscapesClass = namedtuple('CityscapesClass', ['name', 'id', 'train_id', 'category', 'category_id',
                                                      'has_instances', 'ignore_in_eval', 'color'])
 
@@ -88,8 +88,7 @@ class Cityscapes2(data.Dataset):
         self.num_classes=19
 
         if not os.path.isdir(self.images_dir) or not os.path.isdir(self.targets_dir):
-            raise RuntimeError('Dataset not found or incomplete. Please make sure all required folders for the'
-                               ' specified "split" and "mode" are inside the "root" directory')
+            raise RuntimeError('Dataset not found or incomplete')
         if "train" in self.split:
             self.all_imgs.extend(find_cityscapes_filenames(self.images_dir,self.targets_dir,"train",target_suffix))
         if "val" in self.split:
@@ -165,7 +164,7 @@ class Cityscapes2(data.Dataset):
 if __name__=='__main__':
     import transforms as T
     ts=T.Compose([T.RandomResize(1024,1024,"uniform"),T.ToTensor()])
-    dataset=Cityscapes2("../cityscapes_dataset",transforms=ts)
+    dataset=Cityscapes("../cityscapes_dataset", transforms=ts)
     image,target=dataset[1]
     print(image.shape)
     print(target.shape)

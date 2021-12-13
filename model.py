@@ -56,10 +56,8 @@ class RegSeg(nn.Module):
             raise NotImplementedError()
         if pretrained != "" and not ablate_decoder:
             dic = torch.load(pretrained, map_location='cpu')
-            print(type(dic))
             if type(dic)==dict and "model" in dic:
                 dic=dic['model']
-            print(type(dic))
             if change_num_classes:
                 current_model=self.state_dict()
                 new_state_dict={}

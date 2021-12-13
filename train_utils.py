@@ -1,6 +1,6 @@
 from losses import BootstrappedCE
 from lr_schedulers import poly_lr_scheduler,cosine_lr_scheduler,step_lr_scheduler,exp_lr_scheduler
-from data import get_cityscapes,get_pascal_voc,get_camvid, build_val_transform,Cityscapes2,get_mapillary,get_coco
+from data import get_cityscapes,get_pascal_voc,get_camvid, build_val_transform,Cityscapes,get_mapillary,get_coco
 from model import RegSeg
 import torch
 from competitors_models.hardnet import hardnet
@@ -71,8 +71,8 @@ def get_val_dataset(config):
     val_split=config["val_split"]
     if name=="cityscapes":
         val_transform=build_val_transform(val_input_size,val_label_size)
-        val = Cityscapes2(root, split=val_split, target_type="semantic",
-                      transforms=val_transform,class_uniform_pct=0)
+        val = Cityscapes(root, split=val_split, target_type="semantic",
+                         transforms=val_transform, class_uniform_pct=0)
     else:
         raise NotImplementedError()
     return val

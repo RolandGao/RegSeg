@@ -1,6 +1,6 @@
 import transforms as T
 from data_utils import *
-from datasets.cityscapes import Cityscapes2
+from datasets.cityscapes import Cityscapes
 from datasets.camvid import Camvid
 from datasets.voc12 import Voc12Segmentation
 from datasets.coco import Coco
@@ -138,10 +138,10 @@ def get_cityscapes(root, batch_size, train_min_size, train_max_size, train_crop_
 
     train_transform=build_train_transform2(train_min_size, train_max_size, train_crop_size, aug_mode, ignore_value)
     val_transform=build_val_transform(val_input_size,val_label_size)
-    train = Cityscapes2(root, split=train_split, target_type="semantic",
-                        transforms=train_transform,class_uniform_pct=class_uniform_pct)
-    val = Cityscapes2(root, split=val_split, target_type="semantic",
-                      transforms=val_transform,class_uniform_pct=class_uniform_pct)
+    train = Cityscapes(root, split=train_split, target_type="semantic",
+                       transforms=train_transform, class_uniform_pct=class_uniform_pct)
+    val = Cityscapes(root, split=val_split, target_type="semantic",
+                     transforms=val_transform, class_uniform_pct=class_uniform_pct)
     train_loader = get_dataloader_train(train, batch_size, num_workers)
     val_loader = get_dataloader_val(val, num_workers)
     return train_loader, val_loader,train
