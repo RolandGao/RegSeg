@@ -216,7 +216,7 @@ class Exp2_Decoder10(nn.Module):
         channels8,channels16=channels["8"],channels["16"]
         self.head8=ConvBnAct(channels8,32,1)
         self.head16=ConvBnAct(channels16,128,1)
-        self.conv=RBlock(128+32,128,1,16,1,"se")
+        self.conv=DBlock(128+32,128,[1],16,1,"se")
         self.classifier=nn.Conv2d(128, num_classes, 1)
 
     def forward(self, x):

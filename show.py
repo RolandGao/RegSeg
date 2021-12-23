@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import torch
 import time
-from data import get_cityscapes,get_pascal_voc, build_val_transform
+from data import build_val_transform
 from datasets.cityscapes import Cityscapes
 from model import RegSeg
 from train import get_dataset_loaders
 import yaml
 from data_utils import get_dataloader_val
 import torchvision.transforms as T
-from datasets.camvid import Camvid
+import torch.cuda.amp as amp
 
 mean = np.array([0.485, 0.456, 0.406])
 std = np.array([0.229, 0.224, 0.225])
@@ -119,9 +119,10 @@ def display(data_loader,show_mask,num_images=5,skip=4,images_per_line=6):
                 return
     plt.tight_layout()
     plt.show()
-def show(model,data_loader,device,show_mask,num_images=5,skip=4,images_per_line=2):
+def show(model,data_loader,device,show_mask,num_images=5,skip=4,images_per_line=2,mixed_precision=False):
     images_so_far=0
     model.eval()
+    model.to(device)
     num_rows = int(np.ceil(num_images / images_per_line))
     fig=plt.figure(figsize=(8,4))
     data_loader=iter(data_loader)
@@ -131,11 +132,18 @@ def show(model,data_loader,device,show_mask,num_images=5,skip=4,images_per_line=
         for images, targets in data_loader:
             images, targets = images.to(device), targets.to(device)
             start=time.time()
-            outputs = model(images)
+            if torch.cuda.is_available():
+                with amp.autocast(enabled=mixed_precision):
+                    outputs = model(images)
+            else:
+                outputs = model(images)
+            outputs=outputs.argmax(1)
             end=time.time()
             print(end-start)
+            outputs=outputs.cpu()
+            images=images.cpu()
+            targets=targets.cpu()
             for image,target,output in zip(images,targets,outputs):
-                output = output.argmax(0)
                 print(image.size(),target.size(),output.size())
                 plt.subplot(num_rows, 3*images_per_line, images_so_far+1)
                 plt.axis('off')
@@ -156,9 +164,10 @@ def show(model,data_loader,device,show_mask,num_images=5,skip=4,images_per_line=
                     return
     plt.tight_layout()
     plt.show()
-def show_files(model,files,device,show_mask,num_images=5,images_per_line=2):
+def show_files(model,files,device,show_mask,num_images=5,images_per_line=2,mixed_precision=False):
     images_so_far=0
     model.eval()
+    model.to(device)
     num_rows = int(np.ceil(num_images / images_per_line))
     fig=plt.figure(figsize=(8,4))
     with torch.no_grad():
@@ -166,11 +175,17 @@ def show_files(model,files,device,show_mask,num_images=5,images_per_line=2):
             images=_open(filename)
             images= images.to(device)
             start=time.time()
-            outputs = model(images)
+            if torch.cuda.is_available():
+                with amp.autocast(enabled=mixed_precision):
+                    outputs = model(images)
+            else:
+                outputs = model(images)
+            outputs=outputs.argmax(1)
             end=time.time()
             print(end-start)
+            outputs=outputs.cpu()
+            images=images.cpu()
             for image,output in zip(images,outputs):
-                output = output.argmax(0)
                 print(image.size(),output.size())
                 plt.subplot(num_rows, 2*images_per_line, images_so_far+1)
                 plt.axis('off')
@@ -261,12 +276,12 @@ def dispay_mapillary():
 
 def show_mapillary_model():
     import random
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     model=RegSeg(
         name="exp49_decoder14",
         num_classes=65,
         pretrained="checkpoints/mapillary_exp49_decoder14_300_epochs_run1"
     )
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     num_images=10
     images_per_line=2
     skip=0
@@ -283,12 +298,12 @@ def show_mapillary_model():
     show(model,train_loader,device,show_mapillary_mask,num_images=num_images,skip=skip,images_per_line=images_per_line)
 def show_cityscapes_test():
     import os
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     model=RegSeg(
         name="exp48_decoder26",
         num_classes=19,
         pretrained="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
     )
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     files=["munich/munich_000203_000019_leftImg8bit.png",
            "munich/munich_000235_000019_leftImg8bit.png",
            "munich/munich_000292_000019_leftImg8bit.png",
@@ -310,12 +325,12 @@ def show_cityscapes_test():
     show_files(model,new_files,device,show_cityscapes_mask,num_images=num_images,images_per_line=images_per_line)
 def show_cityscapes_model():
     import random
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     model=RegSeg(
         name="exp48_decoder26",
         num_classes=19,
         pretrained="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
     )
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     num_images=4
     images_per_line=1
     skip=8
@@ -339,12 +354,12 @@ def show_cityscapes_failure_modes():
     num_images=4
     images_per_line=1
     skip=0
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     model=RegSeg(
         name="exp48_decoder26",
         num_classes=19,
         pretrained="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
     )
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
     val_transform=build_val_transform(1024,1024)
     indices=[312, 84, 54, 161, 230, 319, 303, 297, 262, 310, 263, 318, 360, 11, 321, 290, 257, 283, 121, 101, 276, 100, 317, 124, 175, 267, 278, 178, 231, 228]
