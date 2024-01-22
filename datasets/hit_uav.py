@@ -96,7 +96,7 @@ def find_hit_uav_filenames(images_dir,targets_dir,split,target_suffix):
         target_types.append(os.path.join(targets_dir, target_name))
         image_filename=os.path.join(images_dir, file_name)
         target_filename=target_types[0]
-        print(image_filename, target_filename)
+        
         all_imgs.append((image_filename,target_filename))
     return all_imgs
 
@@ -200,9 +200,7 @@ class HIT_UAV(data.Dataset):
             image_filename,target_filename, centroid, class_id = self.imgs[index]
         image = Image.open(image_filename).convert('RGB')
         target=Image.open(target_filename).convert('RGB')
-        print(image.size)
-        print(target.size)
-        print(centroid)
+
         if self.transforms is not None:
             image, target = self.transforms(image, (target,centroid))
 
@@ -256,7 +254,7 @@ class HIT_UAV(data.Dataset):
                 image = json_content["images"][image_id]
                 image_size =  (1, image["height"], image["width"])
                 image_filename = image["filename"]
-                print(image_size)
+                
                 mask = torch.zeros(image_size, dtype=torch.uint8)
                 fig = plt.figure(frameon=False)
                 fig.set_size_inches(float(image["width"]/100),float(image["height"]/100))
@@ -273,10 +271,10 @@ class HIT_UAV(data.Dataset):
                 ax.imshow(mask, aspect='auto')
                
                 fig.savefig(self.targets_dir + split + "/" + image_filename)
-                #fig.close()
+                plt.close(fig)
                 #plt.show()
                 t3 = time.time()
-                print("Time : ", time.strftime("%H:%M:%S", time.gmtime()), " T1 :", t2 - t1, "T2 :", t3 - t2, "image_id : ", image_id)
+                print(split[1:], "  Time : ", time.strftime("%H:%M:%S", time.gmtime()), " T1 :", t2 - t1, "T2 :", t3 - t2, "image_id : ", image_id)
 
 if __name__=='__main__':
     #import third_party.RegSeg.transforms as T
