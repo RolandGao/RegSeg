@@ -95,6 +95,22 @@ def get_dataset_loaders(config):
             config["num_workers"],
             config["ignore_value"]
         )
+    elif name=="hit_uav":
+        train_loader, val_loader,train_set=get_hit_uav(
+            config["dataset_dir"],
+            config["batch_size"],
+            config["train_min_size"],
+            config["train_max_size"],
+            config["train_crop_size"],
+            config["val_input_size"],
+            config["val_label_size"],
+            config["aug_mode"],
+            config["class_uniform_pct"],
+            config["train_split"],
+            config["val_split"],
+            config["num_workers"],
+            config["ignore_value"]
+        )
     elif name=="camvid":
         train_loader, val_loader,train_set=get_camvid(
             config["dataset_dir"],

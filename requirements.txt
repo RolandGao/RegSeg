@@ -38,6 +38,6 @@ torch
 torchvision
 tqdm
 typing==3.7.4.3
-typing-extensions==3.10.0.2
+typing-extensions
 urllib3==1.26.6
 yacs==0.1.8
