@@ -329,6 +329,7 @@ def save_cityscapes_results(config,pred_dir):
 def benchmark_multiple(configs):
     for config in configs:
         benchmark_one(config)
+        
 def benchmark_one(config):
     setup_env(config)
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -356,30 +357,32 @@ def benchmark_one(config):
         print("val loader time:",val_loader_time)
 
 def benchmark_main():
-    config_filename="configs/cityscapes_1000epochs.yaml"
+    config_filename="configs/hit_uav_500epochs.yaml"
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    config["dataset_dir"]="cityscapes_dataset"
+    #config["dataset_dir"]="cityscapes_dataset"
     config["class_uniform_pct"]=0
     config["benchmark_model"]=True
     config["benchmark_loader"]=True
     benchmark_one(config)
 
 def validate_main():
-    config_filename="configs/cityscapes_1000epochs.yaml"
+    config_filename="configs/hit_uav_500epochs.yaml"
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    config["dataset_dir"]="cityscapes_dataset"
+    #config["dataset_dir"]="cityscapes_dataset"
     config["class_uniform_pct"]=0 # since we're only evalutaing, not training
-    config["pretrained_path"]="checkpoints/cityscapes_exp48_decoder26_train_1000_epochs_run2"
+    config["pretrained_path"]="checkpoints/hit_uav_exp48_decoder26_trainval_500_epochs_run2"
     confmat=validate_one(config)
     return confmat
+
 def train_main():
-    config_filename= "configs/cityscapes_1000epochs.yaml"
+    config_filename= "configs/hit_uav_500epochs.yaml"
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    config["dataset_dir"]="cityscapes_dataset"
+    #config["dataset_dir"]="cityscapes_dataset"
     train_one(config)
+
 def train_3runs():
     # train the same model 3 times to get error bounds
     config_filename="configs/cityscapes_1000epochs.yaml"
@@ -392,6 +395,7 @@ def train_3runs():
         new_config["RNG_seed"] = run
         configs.append(new_config)
     train_multiple(configs)
+
 def save_results_main():
     config_filename= "configs/cityscapes_trainval_1000epochs.yaml"
     with open(config_filename) as file:

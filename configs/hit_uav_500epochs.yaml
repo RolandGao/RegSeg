@@ -37,7 +37,7 @@ benchmark_model: True
 
 #dataset
 dataset_name: hit_uav
-dataset_dir: /home/j20morli/Documents/Projects/01_Schneider/data/HIT-UAV/HIT-UAV/normal_json/
+dataset_dir: /users/local/j20morli/Schneider/third_party/HIT-UAV/normal_json/
 batch_size: 8
 train_min_size: 512
 train_max_size: 640
@@ -60,4 +60,4 @@ save_every_k_epochs: 25
 save_last_k_epochs: 20
 save_dir: checkpoints
 log_dir: training_log
-save_name: hit_uav_exp48_decoder26_trainval_1000_epochs
+save_name: hit_uav_exp48_decoder26_trainval_500_epochs
