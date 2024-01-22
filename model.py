@@ -54,6 +54,7 @@ class RegSeg(nn.Module):
             self.decoder=FaPNDecoder(num_classes,self.body.channels())
         else:
             raise NotImplementedError()
+        print(pretrained, ablate_decoder)
         if pretrained != "" and not ablate_decoder:
             dic = torch.load(pretrained, map_location='cpu')
             if type(dic)==dict and "model" in dic:

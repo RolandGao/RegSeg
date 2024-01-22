@@ -184,6 +184,8 @@ def train_one(config):
     bn_precise_stats=config["bn_precise_stats"]
     bn_precise_num_samples=config["bn_precise_num_samples"]
 
+    checkpoints = config["checkpoints"]
+
     model=get_model(config).to(device)
     train_loader, val_loader,train_set=get_dataset_loaders(config)
     total_iterations=len(train_loader) * max_epochs
@@ -246,9 +248,9 @@ def train_one(config):
                 best_global_accuracy=acc_global
             if mIU > best_mIU:
                 best_mIU=mIU
-                save(model, optimizer, lr_scheduler, epoch, save_best_path,best_mIU,scaler,run)
+                save(model, optimizer, lr_scheduler, epoch, checkpoints + "/" + save_best_path,best_mIU,scaler,run)
         if save_latest_path != "":
-            save(model, optimizer, lr_scheduler, epoch, save_latest_path,best_mIU,scaler,run)
+            save(model, optimizer, lr_scheduler, epoch, checkpoints + "/" + save_latest_path,best_mIU,scaler,run)
         # if config["model_name"]=="exp26":
         #     decode_dilations_exp26(model.body)
 
@@ -329,7 +331,7 @@ def save_cityscapes_results(config,pred_dir):
 def benchmark_multiple(configs):
     for config in configs:
         benchmark_one(config)
-        
+
 def benchmark_one(config):
     setup_env(config)
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -408,5 +410,5 @@ def save_results_main():
 
 if __name__=='__main__':
     benchmark_main()
-    validate_main()
     train_main()
+    validate_main()
