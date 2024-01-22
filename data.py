@@ -152,9 +152,9 @@ def get_hit_uav(root, batch_size, train_min_size, train_max_size, train_crop_siz
 
     train_transform=build_train_transform2(train_min_size, train_max_size, train_crop_size, aug_mode, ignore_value)
     val_transform=build_val_transform(val_input_size,val_label_size)
-    train = Cityscapes(root, split=train_split, target_type="semantic",
+    train = HIT_UAV(root, split=train_split, target_type="semantic",
                        transforms=train_transform, class_uniform_pct=class_uniform_pct)
-    val = Cityscapes(root, split=val_split, target_type="semantic",
+    val = HIT_UAV(root, split=val_split, target_type="semantic",
                      transforms=val_transform, class_uniform_pct=class_uniform_pct)
     train_loader = get_dataloader_train(train, batch_size, num_workers)
     val_loader = get_dataloader_val(val, num_workers)
