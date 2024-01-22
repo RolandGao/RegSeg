@@ -1,6 +1,6 @@
 from losses import BootstrappedCE
 from lr_schedulers import poly_lr_scheduler,cosine_lr_scheduler,step_lr_scheduler,exp_lr_scheduler
-from data import get_cityscapes,get_pascal_voc,get_camvid, build_val_transform,Cityscapes,get_mapillary,get_coco
+from data import get_cityscapes,get_pascal_voc,get_camvid, build_val_transform,Cityscapes,get_mapillary,get_coco, HIT_UAV, get_hit_uav
 from model import RegSeg
 import torch
 from competitors_models.hardnet import hardnet
