@@ -150,8 +150,8 @@ def get_cityscapes(root, batch_size, train_min_size, train_max_size, train_crop_
 def get_hit_uav(root, batch_size, train_min_size, train_max_size, train_crop_size, val_input_size, val_label_size, aug_mode, num_workers, ignore_value):
     train_transform=build_train_transform(train_min_size, train_max_size, train_crop_size, aug_mode, ignore_value)
     val_transform=build_val_transform(val_input_size,val_label_size)
-    train = Coco(root, "train",train_transform)
-    val = Coco(root, "val",val_transform)
+    train = HIT_UAV(root, "train",train_transform)
+    val = HIT_UAV(root, "val",val_transform)
     train_loader = get_dataloader_train(train, batch_size, num_workers)
     val_loader = get_dataloader_val(val, num_workers)
     return train_loader, val_loader,train

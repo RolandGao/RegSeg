@@ -74,7 +74,7 @@ def convert_annotations_to_mask(annotations, h, w):
     target = Image.fromarray(target)
     return target
 
-class Hit_UAV(data.Dataset):
+class HIT_UAV(data.Dataset):
     def __init__(self, root, image_set, transforms, categories=None):
         # images, masks, json splits
         if categories is None:
