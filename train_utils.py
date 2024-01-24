@@ -105,9 +105,6 @@ def get_dataset_loaders(config):
             config["val_input_size"],
             config["val_label_size"],
             config["aug_mode"],
-            config["class_uniform_pct"],
-            config["train_split"],
-            config["val_split"],
             config["num_workers"],
             config["ignore_value"]
         )

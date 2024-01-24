@@ -74,6 +74,7 @@ def train_one_epoch(model, loss_fun, optimizer, loader, lr_scheduler, print_ever
         image, target = image.cuda(), target.cuda()
         with amp.autocast(enabled=mixed_precision):
             output = model(image)
+            #print(output.size())
             loss = loss_fun(output, target)
         optimizer.zero_grad()
         scaler.scale(loss).backward()
@@ -97,6 +98,7 @@ def save(model,optimizer,scheduler,epoch,path,best_mIU,scaler,run):
         'best_mIU':best_mIU,
         "run":run
     }
+    print(os.path.realpath(path))
     torch.save(dic,path)
 
 def get_config_and_check_files(config_filename):
@@ -184,7 +186,7 @@ def train_one(config):
     bn_precise_stats=config["bn_precise_stats"]
     bn_precise_num_samples=config["bn_precise_num_samples"]
 
-    checkpoints = config["checkpoints"]
+    checkpoints = config["save_dir"]
 
     model=get_model(config).to(device)
     train_loader, val_loader,train_set=get_dataset_loaders(config)
