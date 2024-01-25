@@ -250,9 +250,9 @@ def train_one(config):
                 best_global_accuracy=acc_global
             if mIU > best_mIU:
                 best_mIU=mIU
-                save(model, optimizer, lr_scheduler, epoch, checkpoints + "/" + save_best_path,best_mIU,scaler,run)
+                save(model, optimizer, lr_scheduler, epoch, save_best_path,best_mIU,scaler,run)
         if save_latest_path != "":
-            save(model, optimizer, lr_scheduler, epoch, checkpoints + "/" + save_latest_path,best_mIU,scaler,run)
+            save(model, optimizer, lr_scheduler, epoch, save_latest_path,best_mIU,scaler,run)
         # if config["model_name"]=="exp26":
         #     decode_dilations_exp26(model.body)
 

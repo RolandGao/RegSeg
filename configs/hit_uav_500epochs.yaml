@@ -61,5 +61,5 @@ save_last_k_epochs: 20
 save_dir: checkpoints
 log_dir: training_log
 save_name: hit_uav_exp48_decoder26_trainval_500_epochs
-save_best_path: checkpoints/hit_uav_exp48_decoder26_best
-save_latest_path: checkpoints/hit_uav_exp48_decoder26_latest
+save_best_path: ../../checkpoints/hit_uav_exp48_decoder26_best
+save_latest_path: ../../checkpoints/hit_uav_exp48_decoder26_latest
