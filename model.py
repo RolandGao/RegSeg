@@ -1,7 +1,20 @@
 from blocks import *
 from competitor_blocks import BiseNetDecoder,SFNetDecoder,FaPNDecoder
 from benchmark import benchmark_eval,benchmark_train,benchmark_memory
+from ENet_models.ENet import ENet
 
+class Enet_Regseg(nn.Module) :
+    def __init__(self, name, num_classes, pretrained="", ablate_decoder=False, change_num_classes=False) :
+        super().__init__()
+
+        self.model = ENet(num_classes)
+
+    def forward(self,x):
+        input_shape=x.shape[-2:]
+        x = self.model(x)
+        x = F.interpolate(x, size=input_shape, mode='bilinear', align_corners=False)
+        return x
+    
 class RegSeg(nn.Module):
     # exp48_decoder26 is what we call RegSeg in our paper
     # exp53_decoder29 is a larger version of exp48_decoder26

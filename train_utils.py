@@ -1,7 +1,7 @@
 from losses import BootstrappedCE
 from lr_schedulers import poly_lr_scheduler,cosine_lr_scheduler,step_lr_scheduler,exp_lr_scheduler
 from data import get_cityscapes,get_pascal_voc,get_camvid, build_val_transform,Cityscapes,get_mapillary,get_coco, HIT_UAV, get_hit_uav
-from model import RegSeg
+from model import RegSeg, Enet_Regseg
 import torch
 from competitors_models.hardnet import hardnet
 from competitors_models.DDRNet_Reimplementation import get_ddrnet_23,get_ddrnet_23slim
@@ -185,5 +185,14 @@ def get_model(config):
             return get_ddrnet_23slim(config["num_classes"])
         else:
             raise NotImplementedError()
+    elif model_type=="enet" :
+        ablate_decoder=False
+        if "ablate_decoder" in config:
+            ablate_decoder=config["ablate_decoder"]
+        change_num_classes=False
+        if "change_num_classes" in config:
+            change_num_classes=config["change_num_classes"]
+            
+        return Enet_Regseg(name=config["model_name"], num_classes=config["num_classes"], pretrained=config["pretrained_path"],ablate_decoder=ablate_decoder,change_num_classes=change_num_classes)
     else:
         raise NotImplementedError()
