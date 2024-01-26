@@ -1,7 +1,7 @@
 #MODEL:
 model_name: exp48_decoder26
 model_type: experimental2
-num_classes: 6
+num_classes: 2
 ignore_value: 255
 pretrained_backbone: False
 
@@ -39,9 +39,8 @@ benchmark_model: True
 dataset_name: hit_uav
 dataset_dir: ../HIT-UAV/normal_json/
 batch_size: 8
-train_min_size: 512
-train_max_size: 640
-train_crop_size: [512,512]
+size: 80
+train_crop_size: [32,32]
 val_input_size: 512
 val_label_size: 512
 aug_mode: randaug_reduced

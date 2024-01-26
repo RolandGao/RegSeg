@@ -1,3 +1,4 @@
+import sys
 import random
 import numpy as np
 from torchvision.transforms import functional as F
@@ -126,6 +127,7 @@ class AddNoise:
             noisy = (image + gauss).clip(0, 255).astype("uint8")
             image = Image.fromarray(noisy)
         return image, target
+
 class AddNoise2:
     # gaussian
     # factor = self.factor
@@ -141,6 +143,7 @@ class AddNoise2:
             noisy = (image + gauss).clip(0, 255).astype("uint8")
             image = Image.fromarray(noisy)
         return image, target
+
 class AddNoise3:
     # shot
     def __init__(self,factor, prob=0.5):
@@ -200,6 +203,7 @@ def get_centroid_crop_params(img,output_size,centroid):
     y1 = random.randint(c_y - th, c_y)
     y1 = min(max_y, max(0, y1))
     return y1,x1,th, tw
+
 class RandomPad(object):
     def __init__(self,crop_h, crop_w, pad_value, ignore_label, random_pad):
         self.crop_h = crop_h
@@ -258,6 +262,7 @@ class RandomCrop(object):
         image = F.crop(image, *crop_params)
         label = F.crop(label, *crop_params)
         return image,label
+
 class RandomCrop2(object):
     def __init__(self, crop_h, crop_w, edge_aware):
         self.crop_h = crop_h
@@ -291,3 +296,88 @@ class RandomHorizontalFlip(object):
             image = F.hflip(image)
             target = F.hflip(target)
         return image, target
+
+class Resize(object):
+    def __init__(self, size):
+        self.size = size
+
+    def __call__(self, image, target):
+
+        size=self.size
+
+        if isinstance(target, tuple) or isinstance(target,list):
+            target,centroid=target
+        else:
+            centroid=None
+
+        if centroid is not None:
+            w,h=target.size
+            scale=size/min(w,h)
+            centroid = [int(c * scale) for c in centroid]
+        image = F.resize(image, size)
+        target = F.resize(target, size, interpolation=F.InterpolationMode.NEAREST)
+        if centroid is not None:
+            target=(target,centroid)
+        return image, target
+
+class CropCenterLabel(object) :
+    def __init__(self, crop_h, crop_w, edge_aware):
+        self.crop_h = crop_h
+        self.crop_w = crop_w
+        self.edge_aware=edge_aware
+
+    def __call__(self, image, label):
+        if isinstance(label, tuple) or isinstance(label,list):
+            label,centroid=label
+        else:
+            centroid=None
+        img_w,img_h=image.size
+        crop_h=min(self.crop_h,img_h)
+        crop_w=min(self.crop_w,img_w)
+
+        bbox = label.getbbox()
+        if bbox == None :
+            print("Error")
+            return image, label
+        else :
+            top = max(0, bbox[1] - crop_h)
+            left = max(0, bbox[0] - crop_w)
+            right = min(img_w, bbox[2] + crop_w)
+            bottom = min(img_h, bbox[3] + crop_h)
+
+            height = bottom - top
+            width = right - left
+        
+        image_cropped = F.crop(image, top, left, height, width)
+        label_cropped = F.crop(label, top, left, height, width)
+
+        return image_cropped,label_cropped
+    
+class RandomCrop_WithInstance(object):
+    def __init__(self, crop_h, crop_w, edge_aware):
+        self.crop_h = crop_h
+        self.crop_w = crop_w
+        self.edge_aware=edge_aware
+
+    def __call__(self, image, label):
+        if isinstance(label, tuple) or isinstance(label,list):
+            label,centroid=label
+        else:
+            centroid=None
+        img_w,img_h=image.size
+        crop_h=min(self.crop_h,img_h)
+        crop_w=min(self.crop_w,img_w)
+        if centroid is not None:
+            crop_params=get_centroid_crop_params(image,(crop_h, crop_w),centroid)
+        elif self.edge_aware:
+            crop_params=get_edge_aware_crop_param(image,(crop_h, crop_w))
+        else:
+            crop_params = T.RandomCrop.get_params(image, (crop_h, crop_w))
+        
+        image_cropped = F.crop(image, *crop_params)
+        label_cropped = F.crop(label, *crop_params)
+        while label_cropped.getbbox() == None :
+            crop_params = T.RandomCrop.get_params(image, (crop_h, crop_w))
+            image_cropped = F.crop(image, *crop_params)
+            label_cropped = F.crop(label, *crop_params)
+        return image_cropped,label_cropped

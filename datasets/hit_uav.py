@@ -27,6 +27,7 @@ def load_coco_json(json_file, image_dir):
             obj["segmentation"] = anno["segmentation"]
             obj["category_id"]=anno["category_id"]
             obj["area"]=anno["area"]
+            obj["bbox"] = anno["bbox"]
             annotations.append(obj)
         record["annotations"] = annotations
         records.append(record)
@@ -38,7 +39,7 @@ def filter_and_remap_records(records, categories,filter_records=True):
         if len(anno) == 0:
             return False
         # if more than 1k pixels occupied in the image
-        return sum(obj["area"] for obj in anno) > 1000
+        return sum(obj["area"] for obj in anno) > 0
     new_records=[]
     for record in records:
         annotations=record["annotations"]
@@ -51,6 +52,13 @@ def filter_and_remap_records(records, categories,filter_records=True):
                 new_records.append(record)
         else:
             new_records.append(record)
+    
+    # check
+    for record in new_records :
+        annotations=record["annotations"]
+        target=convert_annotations_to_mask(annotations, 512, 640)
+        if (target.getbbox == None) :
+            print("Error")
     return new_records
 
 def convert_polygons_to_mask(polygons, height, width):
@@ -68,7 +76,7 @@ def convert_annotations_to_mask(annotations, h, w):
         polygons=obj["segmentation"]
         cat=obj["category_id"]
         mask=convert_polygons_to_mask(polygons, h, w)
-        target[mask]=cat
+        target[mask]=cat + 1
         global_mask=global_mask+mask
     target[global_mask>1]=255
     target = Image.fromarray(target)
@@ -83,17 +91,15 @@ class HIT_UAV(data.Dataset):
         root= os.path.expanduser(root)
         root = os.path.realpath(root)
         print(root)
-        print(os.path.realpath(root))
-        print(image_set)
         img_dir=os.path.join(root,f"{image_set}")
         json_file=os.path.join(root,"annotations", f"{image_set}.json")
         filter_records=(image_set=="train")
         records=load_coco_json(json_file,img_dir)
-        print(len(records))
+        print("Dataset Length before filter and remap", len(records))
         records=filter_and_remap_records(records, categories,filter_records)
         self.records=records
         self.transforms=transforms
-        print(len(self.records))
+        print("Dataset Length after filter and remap", len(self.records))
 
     def __getitem__(self, index):
         record=self.records[index]

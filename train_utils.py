@@ -99,8 +99,7 @@ def get_dataset_loaders(config):
         train_loader, val_loader,train_set=get_hit_uav(
             config["dataset_dir"],
             config["batch_size"],
-            config["train_min_size"],
-            config["train_max_size"],
+            config["size"],
             config["train_crop_size"],
             config["val_input_size"],
             config["val_label_size"],

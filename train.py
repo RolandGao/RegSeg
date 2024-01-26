@@ -74,7 +74,7 @@ def train_one_epoch(model, loss_fun, optimizer, loader, lr_scheduler, print_ever
         image, target = image.cuda(), target.cuda()
         with amp.autocast(enabled=mixed_precision):
             output = model(image)
-            #print(output.size())
+            
             loss = loss_fun(output, target)
         optimizer.zero_grad()
         scaler.scale(loss).backward()
@@ -98,7 +98,6 @@ def save(model,optimizer,scheduler,epoch,path,best_mIU,scaler,run):
         'best_mIU':best_mIU,
         "run":run
     }
-    print(os.path.realpath(path))
     torch.save(dic,path)
 
 def get_config_and_check_files(config_filename):
@@ -166,10 +165,10 @@ def train_multiple(configs):
         f.write(f"mIOUs: {mIOUs}\n")
         f.write(f"global_accuracies: {global_accuracies}\n")
     return mIOUs,global_accuracies
-def train_one(config):
+
+def train_one(config, device):
     config=check_config_files(config)
     setup_env(config)
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     save_best_path=config["save_best_path"]
     print("saving to: "+save_best_path)
     save_latest_path=config["save_latest_path"]
@@ -274,9 +273,8 @@ def validate_multiple(configs):
         confmat=validate_one(config)
         confmats.append(confmat)
     return confmats
-def validate_one(config):
+def validate_one(config, device):
     setup_env(config)
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     train_loader, val_loader,train_set=get_dataset_loaders(config)
     model=get_model(config).to(device)
     mixed_precision=config["mixed_precision"]
@@ -299,11 +297,10 @@ def validate_one(config):
     print(confmat)
     return confmat
 
-def save_cityscapes_results(config,pred_dir):
+def save_cityscapes_results(config,pred_dir, device):
     from evaluator import save_results
     from PIL import Image
     setup_env(config)
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     val=get_val_dataset(config)
     model=get_model(config).to(device)
     mixed_precision=config["mixed_precision"]
@@ -324,19 +321,18 @@ def save_cityscapes_results(config,pred_dir):
             image=image.unsqueeze(0)
             with amp.autocast(enabled=mixed_precision):
                 output = model(image)
-            #print(output.shape)
+            
             output=torch.nn.functional.interpolate(output, size=[1024,2048], mode='bilinear', align_corners=False)
             output=output.argmax(1) # 3D output instead of 4D
             output=output.squeeze(0)
             save_results(pred_dir,image_filename,output)
 
-def benchmark_multiple(configs):
+def benchmark_multiple(configs, device):
     for config in configs:
-        benchmark_one(config)
+        benchmark_one(config, device)
 
-def benchmark_one(config):
+def benchmark_one(config, device):
     setup_env(config)
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     mixed_precision=config["mixed_precision"]
     warmup_iter=config["warmup_iter"]
     num_iter=config["num_iter"]
@@ -360,36 +356,34 @@ def benchmark_one(config):
         print("train loader time:",train_loader_time)
         print("val loader time:",val_loader_time)
 
-def benchmark_main():
-    config_filename="configs/hit_uav_500epochs.yaml"
+def benchmark_main(config_filename, device):
+
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    #config["dataset_dir"]="cityscapes_dataset"
+    
     config["class_uniform_pct"]=0
     config["benchmark_model"]=True
     config["benchmark_loader"]=True
-    benchmark_one(config)
+    benchmark_one(config, device)
 
-def validate_main():
-    config_filename="configs/hit_uav_500epochs.yaml"
+def validate_main(config_filename, device):
+
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    #config["dataset_dir"]="cityscapes_dataset"
+    
     config["class_uniform_pct"]=0 # since we're only evalutaing, not training
     config["pretrained_path"]="checkpoints/hit_uav_exp48_decoder26_trainval_500_epochs_run2"
-    confmat=validate_one(config)
+    confmat=validate_one(config, device)
     return confmat
 
-def train_main():
-    config_filename= "configs/hit_uav_500epochs.yaml"
+def train_main(config_filename, device):
     with open(config_filename) as file:
         config=yaml.full_load(file)
-    #config["dataset_dir"]="cityscapes_dataset"
-    train_one(config)
 
-def train_3runs():
+    train_one(config, device)
+
+def train_3runs(config_filename, device):
     # train the same model 3 times to get error bounds
-    config_filename="configs/cityscapes_1000epochs.yaml"
     with open(config_filename) as file:
         config=yaml.full_load(file)
     configs=[]
@@ -398,19 +392,22 @@ def train_3runs():
         new_config["run"] = run
         new_config["RNG_seed"] = run
         configs.append(new_config)
-    train_multiple(configs)
+    train_multiple(configs, device)
 
-def save_results_main():
-    config_filename= "configs/cityscapes_trainval_1000epochs.yaml"
+def save_results_main(config_filename):
+    
     with open(config_filename) as file:
         config=yaml.full_load(file)
     config["model_name"]="exp53_decoder29"
     config["val_split"]="test"
     config["pretrained_path"]="checkpoints/cityscapes_exp53_decoder29_trainval_1000_epochs_1024_crop_bootstrapped_run1"
     pred_dir="test_submission_dir"
-    save_cityscapes_results(config,pred_dir)
+    save_cityscapes_results(config,pred_dir, device)
 
 if __name__=='__main__':
-    benchmark_main()
-    train_main()
-    validate_main()
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+    config_filename= "configs/hit_uav_enet_500epochs.yaml"
+
+    benchmark_main(config_filename, device)
+    train_main(config_filename, device)
+    validate_main(config_filename, device)
