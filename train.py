@@ -74,7 +74,7 @@ def train_one_epoch(model, loss_fun, optimizer, loader, lr_scheduler, print_ever
         image, target = image.cuda(), target.cuda()
         with amp.autocast(enabled=mixed_precision):
             output = model(image)
-            
+
             loss = loss_fun(output, target)
         optimizer.zero_grad()
         scaler.scale(loss).backward()
@@ -104,6 +104,7 @@ def get_config_and_check_files(config_filename):
     with open(config_filename) as file:
         config=yaml.full_load(file)
     return check_config_files(config)
+
 def check_config_files(config):
     save_dir=config["save_dir"]
     log_dir=config["log_dir"]
@@ -202,7 +203,7 @@ def train_one(config, device):
     save_best_on_epochs=get_epochs_to_save(config)
     print("save on epochs: ",save_best_on_epochs)
 
-    if config["resume"]:
+    if config["resume"] == "True":
         dic=torch.load(config["resume_path"],map_location='cpu')
         model.load_state_dict(dic['model'])
         optimizer.load_state_dict(dic['optimizer'])
@@ -219,6 +220,7 @@ def train_one(config, device):
         with open(log_path,"a") as f:
             f.write(f"{config}\n")
             f.write(f"run: {run}\n")
+
     for epoch in range(epoch_start,epochs):
         # Setting the seed to the curent epoch allows models with config["resume"]=True to be consistent.
         torch.manual_seed(epoch)
@@ -252,8 +254,6 @@ def train_one(config, device):
                 save(model, optimizer, lr_scheduler, epoch, save_best_path,best_mIU,scaler,run)
         if save_latest_path != "":
             save(model, optimizer, lr_scheduler, epoch, save_latest_path,best_mIU,scaler,run)
-        # if config["model_name"]=="exp26":
-        #     decode_dilations_exp26(model.body)
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -356,36 +356,27 @@ def benchmark_one(config, device):
         print("train loader time:",train_loader_time)
         print("val loader time:",val_loader_time)
 
-def benchmark_main(config_filename, device):
-
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
+def benchmark_main(config, device):
     
     config["class_uniform_pct"]=0
     config["benchmark_model"]=True
     config["benchmark_loader"]=True
     benchmark_one(config, device)
 
-def validate_main(config_filename, device):
-
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
+def validate_main(config, device):
     
     config["class_uniform_pct"]=0 # since we're only evalutaing, not training
     config["pretrained_path"]="checkpoints/hit_uav_exp48_decoder26_trainval_500_epochs_run2"
     confmat=validate_one(config, device)
     return confmat
 
-def train_main(config_filename, device):
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
+def train_main(config, device):
 
     train_one(config, device)
 
-def train_3runs(config_filename, device):
+def train_3runs(config, device):
     # train the same model 3 times to get error bounds
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
+
     configs=[]
     for run in range(1,4):
         new_config = copy.deepcopy(config)
@@ -394,20 +385,43 @@ def train_3runs(config_filename, device):
         configs.append(new_config)
     train_multiple(configs, device)
 
-def save_results_main(config_filename):
+def save_results_main(config):
     
-    with open(config_filename) as file:
-        config=yaml.full_load(file)
     config["model_name"]="exp53_decoder29"
     config["val_split"]="test"
     config["pretrained_path"]="checkpoints/cityscapes_exp53_decoder29_trainval_1000_epochs_1024_crop_bootstrapped_run1"
     pred_dir="test_submission_dir"
     save_cityscapes_results(config,pred_dir, device)
 
+def load_yaml(config_filename) :
+    with open(config_filename) as file:
+        config=yaml.full_load(file)
+    return config
+ 
 if __name__=='__main__':
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    config_filename= "configs/hit_uav_enet_500epochs.yaml"
 
-    benchmark_main(config_filename, device)
-    train_main(config_filename, device)
-    validate_main(config_filename, device)
+    config_filenames = ["hit_uav_enet_500epochs", "hit_uav_500epochs"]
+    learning_rates = [0.5, 0.05, 0.01, 0.001]
+
+    for config_filename in config_filenames :
+        for learning_rate in learning_rates :
+            save_name = str(learning_rate) + "_" + config_filename
+            save_best = "../../checkpoints/" + save_name + "_best"
+            save_last = "../../checkpoints/" + save_name + "_last"
+
+            print("EXPERIMENT : ", config_filename, learning_rate, save_name)
+            
+            config = load_yaml("configs/" + config_filename + ".yaml")
+            config["lr"] = learning_rate
+            config["save_name"] = save_name
+            config["save_best_path"] = save_best
+            config["save_latest_path"] = save_last
+            train_main(config, device)
+
+            config = load_yaml("configs/" + config_filename + ".yaml")
+            config["lr"] = learning_rate
+            config["save_name"] = save_name
+            config["save_best_path"] = save_best
+            config["save_latest_path"] = save_last
+            validate_main(config, device)
