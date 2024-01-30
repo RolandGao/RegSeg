@@ -7,7 +7,7 @@ class Enet_Regseg(nn.Module) :
     def __init__(self, name, num_classes, pretrained="", ablate_decoder=False, change_num_classes=False) :
         super().__init__()
 
-        if self.name == "lowres" :
+        if name == "lowres" :
             device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
             self.model = Enet_LowRes(num_classes, device=device)
         else : 
