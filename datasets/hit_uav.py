@@ -4,6 +4,12 @@ import os
 import json
 import numpy as np
 from pycocotools import mask as coco_mask
+import matplotlib.pyplot as plt
+
+def print_and_save(image, save_name) :
+	plt.imshow(image)
+	plt.savefig(save_name)
+	plt.close()
 
 def load_coco_json(json_file, image_dir):
     from pycocotools.coco import COCO
@@ -38,14 +44,16 @@ def filter_and_remap_records(records, categories,filter_records=True):
         # if it's empty, there is no annotation
         if len(anno) == 0:
             return False
-        # if more than 1k pixels occupied in the image
+        # if there are pixel in the image
         return sum(obj["area"] for obj in anno) > 0
     new_records=[]
+
     for record in records:
         annotations=record["annotations"]
         annotations=[obj for obj in annotations if obj["category_id"] in categories]
         for obj in annotations:
             obj["category_id"]=categories.index(obj["category_id"])
+
         record["annotations"]=annotations
         if filter_records:
             if _has_valid_annotation(annotations):
@@ -78,7 +86,7 @@ def convert_annotations_to_mask(annotations, h, w):
         mask=convert_polygons_to_mask(polygons, h, w)
         target[mask]=cat + 1
         global_mask=global_mask+mask
-    target[global_mask>1]=255
+    target[target>1]=1
     target = Image.fromarray(target)
     return target
 
@@ -90,7 +98,6 @@ class HIT_UAV(data.Dataset):
             categories=[0]
         root= os.path.expanduser(root)
         root = os.path.realpath(root)
-        print(root)
         img_dir=os.path.join(root,f"{image_set}")
         json_file=os.path.join(root,"annotations", f"{image_set}.json")
         filter_records=(image_set=="train")
@@ -106,7 +113,7 @@ class HIT_UAV(data.Dataset):
         h,w=record["height"],record["width"]
         image_filename=record["filename"]
         annotations=record["annotations"]
-        #print(image_filename)
+        
         image = Image.open(image_filename).convert('RGB')
         target=convert_annotations_to_mask(annotations, h, w)
         if self.transforms is not None:
