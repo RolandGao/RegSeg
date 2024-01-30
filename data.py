@@ -6,6 +6,7 @@ from datasets.voc12 import Voc12Segmentation
 from datasets.coco import Coco
 from datasets.mapillary import Mapillary
 from datasets.hit_uav import HIT_UAV
+from tools import get_mean_and_std
 
 def build_val_transform(val_input_size,val_label_size):
     mean = (0.485, 0.456, 0.406)
@@ -136,13 +137,11 @@ def build_train_transform(train_min_size, train_max_size, train_crop_size, aug_m
 
 # low resolution data
 def build_train_transform_hit_uav(size, train_crop_size, aug_mode,ignore_value) :
-    # temporary values
-    mean = (0.485, 0.456, 0.406)
-    std = (0.229, 0.224, 0.225)
-    fill = tuple([int(v * 255) for v in mean])
+    mean = (0.5003, 0.5003, 0.5003)
+    std = (0.1541, 0.1541, 0.1541)
+
     #ignore_value = 255
     edge_aware_crop=False
-    resize_mode="uniform"
 
     transforms = []
 
@@ -156,17 +155,14 @@ def build_train_transform_hit_uav(size, train_crop_size, aug_mode,ignore_value) 
     transforms.append(T.Resize((size, size)))
     transforms.append(T.RandomHorizontalFlip(0.5))
     transforms.append(T.ToTensor())
-    transforms.append(T.Normalize(
-        mean,
-        std
-    ))
+    transforms.append(T.Normalize(mean,std))
     return T.Compose(transforms)
 
 def build_val_transform_hit_uav(val_input_size,val_label_size):
-    # temporary values
-    mean = (0.485, 0.456, 0.406)
-    std = (0.229, 0.224, 0.225)
+    mean = (0.5003, 0.5003, 0.5003)
+    std = (0.1541, 0.1541, 0.1541)
     transforms=[]
+    
     transforms.append(
         T.ValResize(val_input_size,val_label_size)
     )
@@ -193,10 +189,16 @@ def get_cityscapes(root, batch_size, train_min_size, train_max_size, train_crop_
 def get_hit_uav(root, batch_size, size, train_crop_size, val_input_size, val_label_size, aug_mode, num_workers, ignore_value):
     train_transform=build_train_transform_hit_uav(size, train_crop_size, aug_mode, ignore_value)
     val_transform=build_val_transform_hit_uav(val_input_size,val_label_size)
+
     train = HIT_UAV(root, "train",train_transform)
     val = HIT_UAV(root, "val",val_transform)
+
     train_loader = get_dataloader_train(train, batch_size, num_workers)
     val_loader = get_dataloader_val(val, num_workers)
+
+    # print(get_mean_and_std(train_loader))
+    # print(get_mean_and_std(val_loader))
+
     return train_loader, val_loader,train
 
 def get_camvid(root, batch_size, train_min_size, train_max_size, train_crop_size, val_input_size,val_label_size, aug_mode,train_split,val_split,num_workers,ignore_value):
