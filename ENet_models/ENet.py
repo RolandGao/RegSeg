@@ -16,10 +16,10 @@
 
 import torch
 import torch.nn as nn
-from InitialBlock import InitialBlock, InitialBlock_LowRes
-from RDDNeck import RDDNeck, RDDNeck_LowRes
-from UBNeck import UBNeck, UBNeck_LowRes
-from ASNeck import ASNeck, ASNeck_LowRes
+from .InitialBlock import InitialBlock, InitialBlock_LowRes
+from .RDDNeck import RDDNeck, RDDNeck_LowRes
+from .UBNeck import UBNeck, UBNeck_LowRes
+from .ASNeck import ASNeck, ASNeck_LowRes
 
 class ENet(nn.Module):
     def __init__(self, C):
@@ -442,17 +442,3 @@ class Enet_LowRes(nn.Module) :
         x = self.fullconv(x)
         
         return x
-
-# Test function (#TODO : remove)
-if __name__ == "__main__" :
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-
-
-    model = Enet_LowRes(2, device)
-    print(device, device == torch.device('cuda'))
-    input = torch.ones((1, 3, 80, 80))
-    input = input.to(device)
-    model = model.to(device)
-    output = model(input)
-    print(input.size())
-    print(output.size())

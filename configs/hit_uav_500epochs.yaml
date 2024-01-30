@@ -6,8 +6,8 @@ ignore_value: 255
 pretrained_backbone: False
 
 #OPTIM:
-epochs: 1000
-max_epochs: 1000
+epochs: 500
+max_epochs: 500
 resume: False
 lr: 0.05
 momentum: 0.9
