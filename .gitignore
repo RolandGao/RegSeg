@@ -10,5 +10,5 @@ pascal_voc_dataset
 coco
 CamVid
 test.py
-test/*
-training_log/*
+test
+training_log
